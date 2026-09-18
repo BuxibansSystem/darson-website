@@ -1,11 +1,13 @@
 <script setup>
-import { ref } from "vue";
+import { onBeforeUnmount, onMounted, ref } from "vue";
 import logo from "../assets/共用/logo.png";
 
 const isMenuOpen = ref(false);
 const isBranchMenuOpen = ref(false);
 const isCourseMenuOpen = ref(false);
 const isAchievementMenuOpen = ref(false);
+const isHeaderHidden = ref(false);
+let lastScrollY = 0;
 
 const branches = [
   { name: "明湖分校", id: "minghu" },
@@ -46,10 +48,36 @@ const toggleCourseMenu = () => {
 const toggleAchievementMenu = () => {
   isAchievementMenuOpen.value = !isAchievementMenuOpen.value;
 };
+
+const handleScroll = () => {
+  const currentScrollY = Math.max(
+    window.scrollY,
+    document.documentElement.scrollTop,
+  );
+
+  if (currentScrollY <= 24) {
+    isHeaderHidden.value = false;
+  } else if (currentScrollY > lastScrollY) {
+    isHeaderHidden.value = true;
+  } else if (currentScrollY < lastScrollY) {
+    isHeaderHidden.value = false;
+  }
+
+  lastScrollY = currentScrollY;
+};
+
+onMounted(() => {
+  lastScrollY = window.scrollY;
+  window.addEventListener("scroll", handleScroll, { passive: true });
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
 </script>
 
 <template>
-  <header class="site-header">
+  <header class="site-header" :class="{ 'is-hidden': isHeaderHidden }">
     <div class="topbar">
       <RouterLink class="brand" to="/" aria-label="大昇文理補習班首頁">
         <img class="brand-logo" :src="logo" alt="" />

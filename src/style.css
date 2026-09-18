@@ -57,7 +57,7 @@ ul {
 
 #app {
   min-height: 100vh;
-  overflow: hidden;
+  overflow: clip;
   background: var(--paper);
 }
 
@@ -67,6 +67,11 @@ ul {
   z-index: 20;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(14px);
+  transition: transform 220ms ease;
+}
+
+.site-header.is-hidden {
+  transform: translateY(-100%);
 }
 
 .topbar,
