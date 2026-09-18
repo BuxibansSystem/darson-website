@@ -5,7 +5,7 @@ import BranchPage from "../pages/BranchPage.vue";
 import CoursePage from "../pages/CoursePage.vue";
 import NewsPage from "../pages/NewsPage.vue";
 import StudentsPage from "../pages/StudentsPage.vue";
-import AchievementsPage from "../pages/AchievementsPage.vue";
+import AchievementPage from "../pages/AchievementPage.vue";
 import ContactPage from "../pages/ContactPage.vue";
 
 export default createRouter({
@@ -34,7 +34,8 @@ export default createRouter({
     { path: "/courses/:stageId", component: CoursePage },
     { path: "/news", component: NewsPage },
     { path: "/students", component: StudentsPage },
-    { path: "/achievements", component: AchievementsPage },
+    { path: "/achievements", redirect: "/achievements/honors" },
+    { path: "/achievements/:achievementId", component: AchievementPage },
     { path: "/contact", component: ContactPage },
   ],
 });

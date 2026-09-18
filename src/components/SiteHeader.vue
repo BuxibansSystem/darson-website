@@ -5,6 +5,7 @@ import logo from "../assets/共用/logo.png";
 const isMenuOpen = ref(false);
 const isBranchMenuOpen = ref(false);
 const isCourseMenuOpen = ref(false);
+const isAchievementMenuOpen = ref(false);
 
 const branches = [
   { name: "明湖分校", id: "minghu" },
@@ -20,10 +21,18 @@ const courseStages = [
   { name: "高中課程", id: "senior-high" },
 ];
 
+const achievementSections = [
+  { name: "榮譽榜", id: "honors" },
+  { name: "學生故事", id: "student-stories" },
+  { name: "導師經驗談", id: "teacher-stories" },
+  { name: "家長推薦", id: "parent-reviews" },
+];
+
 const closeMenu = () => {
   isMenuOpen.value = false;
   isBranchMenuOpen.value = false;
   isCourseMenuOpen.value = false;
+  isAchievementMenuOpen.value = false;
 };
 
 const toggleBranchMenu = () => {
@@ -32,6 +41,10 @@ const toggleBranchMenu = () => {
 
 const toggleCourseMenu = () => {
   isCourseMenuOpen.value = !isCourseMenuOpen.value;
+};
+
+const toggleAchievementMenu = () => {
+  isAchievementMenuOpen.value = !isAchievementMenuOpen.value;
 };
 </script>
 
@@ -119,7 +132,35 @@ const toggleCourseMenu = () => {
       </div>
       <RouterLink to="/news" @click="closeMenu">最新消息</RouterLink>
       <RouterLink to="/students" @click="closeMenu">大昇專欄</RouterLink>
-      <RouterLink to="/achievements" @click="closeMenu">成果見證</RouterLink>
+      <div class="nav-dropdown" :class="{ 'is-open': isAchievementMenuOpen }">
+        <RouterLink
+          class="nav-dropdown-link"
+          to="/achievements"
+          @click="closeMenu"
+          >成果見證</RouterLink
+        >
+        <button
+          class="nav-dropdown-toggle"
+          type="button"
+          :aria-expanded="isAchievementMenuOpen"
+          aria-controls="achievement-navigation"
+          :aria-label="
+            isAchievementMenuOpen ? '收合成果見證選單' : '展開成果見證選單'
+          "
+          @click="toggleAchievementMenu"
+        >
+          <span aria-hidden="true">⌄</span>
+        </button>
+        <div id="achievement-navigation" class="nav-dropdown-menu">
+          <RouterLink
+            v-for="section in achievementSections"
+            :key="section.id"
+            :to="`/achievements/${section.id}`"
+            @click="closeMenu"
+            >{{ section.name }}</RouterLink
+          >
+        </div>
+      </div>
       <RouterLink to="/contact" @click="closeMenu">我要先問</RouterLink>
     </nav>
   </header>
