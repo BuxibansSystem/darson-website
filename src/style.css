@@ -3107,13 +3107,64 @@ ul {
 }
 
 .branch-message-section {
+  position: relative;
+  overflow: hidden;
   padding-top: 28px;
 }
 
 .branch-message-heading,
 .branch-message-quote {
+  position: relative;
+  z-index: 1;
   width: min(1120px, 100%);
   margin-inline: auto;
+}
+
+.branch-message-sparkles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.branch-message-sparkles::before {
+  position: absolute;
+  top: 118px;
+  left: clamp(26px, 6vw, 92px);
+  color: #f4d45f;
+  content: "✦";
+  font-size: 26px;
+  line-height: 1;
+  text-shadow:
+    48px 52px 0 #f4d45f,
+    12px 94px 0 rgba(244, 212, 95, 0.9);
+  animation: branch-sparkle-twinkle 2.8s ease-in-out infinite;
+}
+
+.branch-message-sparkles::after {
+  position: absolute;
+  top: 150px;
+  left: clamp(54px, 9vw, 150px);
+  width: 132px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, #f4d45f 45%, transparent);
+  content: "";
+  opacity: 0.9;
+  transform: rotate(34deg);
+  transform-origin: left center;
+}
+
+@keyframes branch-sparkle-twinkle {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(0.94) rotate(-4deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08) rotate(4deg);
+  }
 }
 
 .branch-message-heading h2 {
@@ -4281,4 +4332,27 @@ ul {
 .achievements-hero strong,
 .branches-hero strong {
   font-size: 18px;
+}
+
+@media (max-width: 760px) {
+  .branch-message-sparkles::before {
+    top: 94px;
+    left: 18px;
+    font-size: 20px;
+    text-shadow:
+      34px 38px 0 #f4d45f,
+      8px 68px 0 rgba(244, 212, 95, 0.9);
+  }
+
+  .branch-message-sparkles::after {
+    top: 120px;
+    left: 40px;
+    width: 88px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .branch-message-sparkles::before {
+    animation: none;
+  }
 }

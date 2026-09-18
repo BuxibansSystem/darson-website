@@ -121,6 +121,7 @@ const branchImages = computed(() => {
       class="section branch-message-section"
       aria-labelledby="branch-message-title"
     >
+      <div class="branch-message-sparkles" aria-hidden="true"></div>
       <div class="branch-message-heading">
         <h2 id="branch-message-title">主任的話</h2>
         <p>— {{ branch.messageTitle }}</p>
