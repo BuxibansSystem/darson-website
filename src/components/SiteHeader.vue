@@ -56,7 +56,6 @@ const toggleAchievementMenu = () => {
         <strong>大昇文理補習班</strong>
       </RouterLink>
       <p>高中、國中、國小｜教育、升學、生活陪伴</p>
-      <a class="line-button" href="tel:0226310572">預約諮詢</a>
       <button
         class="menu-toggle"
         type="button"
@@ -161,7 +160,7 @@ const toggleAchievementMenu = () => {
           >
         </div>
       </div>
-      <RouterLink to="/contact" @click="closeMenu">我要先問</RouterLink>
+      <RouterLink to="/contact" @click="closeMenu">預約諮詢</RouterLink>
     </nav>
   </header>
 </template>
