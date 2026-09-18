@@ -344,7 +344,7 @@ ul {
   position: absolute;
   width: 42px;
   height: 42px;
-  background: linear-gradient(145deg, #fff5a6 0%, #ffe26a 48%, #f3c841 100%);
+  background: #ffe26a;
   filter: drop-shadow(0 5px 8px rgba(97, 78, 20, 0.28));
   clip-path: polygon(
     50% 0%,
@@ -359,6 +359,23 @@ ul {
     39% 34%
   );
   pointer-events: none;
+}
+
+.photo-star-left-main,
+.photo-star-right-small {
+  background: #ffe26a;
+  filter: drop-shadow(0 5px 8px rgba(145, 112, 20, 0.26));
+}
+
+.photo-star-left-small-one,
+.photo-star-right-main {
+  background: #a8e6f4;
+  filter: drop-shadow(0 5px 8px rgba(58, 133, 155, 0.25));
+}
+
+.photo-star-left-small-two {
+  background: #f8c2d2;
+  filter: drop-shadow(0 5px 8px rgba(169, 86, 112, 0.24));
 }
 
 .photo-star-left-main {
@@ -383,6 +400,20 @@ ul {
   height: 18px;
 }
 
+.photo-rail-streak-accent {
+  position: absolute;
+  left: -122px;
+  bottom: 116px;
+  width: 142px;
+  height: 2px;
+  border-radius: 999px;
+  background: #ffe26a;
+  opacity: 0.96;
+  transform: rotate(-32deg);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
 .photo-star-right-main {
   right: -82px;
   bottom: 52px;
@@ -395,31 +426,6 @@ ul {
   bottom: 126px;
   width: 22px;
   height: 22px;
-}
-
-.photo-rail-streak {
-  position: absolute;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, #ffe26a 35%, transparent);
-  opacity: 0.92;
-  pointer-events: none;
-}
-
-.photo-rail-streak-left {
-  top: 72px;
-  left: -70px;
-  width: 104px;
-  transform: rotate(34deg);
-  transform-origin: left center;
-}
-
-.photo-rail-streak-right {
-  right: -76px;
-  bottom: 94px;
-  width: 86px;
-  transform: rotate(-28deg);
-  transform-origin: right center;
 }
 
 .slider-dots,
@@ -1919,8 +1925,8 @@ ul {
 
 .team-photo-strip {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-template-rows: repeat(2, minmax(128px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: minmax(180px, 1fr);
   gap: 16px;
   max-width: 1160px;
   margin: 38px auto 0;
@@ -1932,15 +1938,6 @@ ul {
 
 .team-photo-strip figure {
   min-height: 150px;
-}
-
-.team-photo-strip figure:first-child {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
-.team-photo-strip figure:nth-child(2) {
-  grid-column: span 2;
 }
 
 .about-grid-spacer {
@@ -4482,6 +4479,12 @@ ul {
     left: 54px;
   }
 
+  .photo-rail-streak-accent {
+    left: 18px;
+    bottom: 70px;
+    width: 88px;
+  }
+
   .photo-star-right-main {
     right: 8px;
     bottom: 46px;
@@ -4492,18 +4495,6 @@ ul {
   .photo-star-right-small {
     right: 26px;
     bottom: 100px;
-  }
-
-  .photo-rail-streak-left {
-    top: 58px;
-    left: 20px;
-    width: 74px;
-  }
-
-  .photo-rail-streak-right {
-    right: 12px;
-    bottom: 78px;
-    width: 64px;
   }
 
   .branch-message-sparkles::before {

@@ -195,8 +195,7 @@ onBeforeUnmount(() => window.clearInterval(carouselTimer));
         ></span>
         <span class="photo-star photo-star-right-main"></span>
         <span class="photo-star photo-star-right-small"></span>
-        <span class="photo-rail-streak photo-rail-streak-left"></span>
-        <span class="photo-rail-streak photo-rail-streak-right"></span>
+        <span class="photo-rail-streak photo-rail-streak-accent"></span>
       </div>
       <div class="slider-dots" aria-label="校園照片輪播">
         <button

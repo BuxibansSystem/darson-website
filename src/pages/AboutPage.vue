@@ -1,7 +1,6 @@
 <script setup>
 import foundingImageOne from "../assets/關於大昇/創辦理念/S__34603031_0.jpg";
 import foundingImageTwo from "../assets/關於大昇/創辦理念/S__34603083_0.jpg";
-import teamImageOne from "../assets/關於大昇/團隊教學風格/S__34603040_0 (1).jpg";
 import teamImageTwo from "../assets/關於大昇/團隊教學風格/S__34603055_0 (1).jpg";
 import teamImageThree from "../assets/關於大昇/團隊教學風格/S__34603071_0 (1).jpg";
 import teamImageFour from "../assets/關於大昇/團隊教學風格/S__34652247_0 (1).jpg";
@@ -46,7 +45,6 @@ const foundingImages = [
 ];
 
 const teamImages = [
-  { src: teamImageOne, alt: "老師陪伴學生學習" },
   { src: teamImageTwo, alt: "學生專注完成課堂練習" },
   { src: teamImageThree, alt: "老師與學生一起討論題目" },
   { src: teamImageFour, alt: "課堂中的教學引導" },
