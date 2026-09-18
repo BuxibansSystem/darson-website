@@ -185,6 +185,10 @@ onBeforeUnmount(() => window.clearInterval(carouselTimer));
       >
         <img :src="slide.image" :alt="slide.title" />
       </article>
+      <div class="photo-rail-sparkles" aria-hidden="true">
+        <span class="photo-star photo-star-left">✦</span>
+        <span class="photo-star photo-star-right">✧</span>
+      </div>
       <div class="slider-dots" aria-label="校園照片輪播">
         <button
           v-for="(slide, index) in heroSlides"
