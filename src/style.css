@@ -2070,7 +2070,25 @@ ul {
 }
 
 .home-page .literacy-grid article {
-  border: 1px solid rgba(36, 116, 59, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  color: #ffffff;
+  background: #42b95d;
+  box-shadow: 6px 7px 0 #ccebd3;
+}
+
+.home-page .literacy-grid article:nth-child(2) {
+  background: #2fa9d4;
+  box-shadow: 6px 7px 0 #cfeaf4;
+}
+
+.home-page .literacy-grid article:nth-child(3) {
+  background: #e87898;
+  box-shadow: 6px 7px 0 #f3d9e1;
+}
+
+.home-page .literacy-grid strong,
+.home-page .literacy-grid span {
+  color: #ffffff;
 }
 
 .home-page .news-section {
