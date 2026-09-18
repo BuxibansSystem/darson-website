@@ -331,64 +331,90 @@ ul {
 .photo-rail-sparkles {
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 1;
   pointer-events: none;
 }
 
 .photo-star {
   position: absolute;
-  color: #ffe26a;
-  line-height: 1;
-  text-shadow: 0 4px 10px rgba(97, 78, 20, 0.24);
-  animation: photo-star-twinkle 2.8s ease-in-out infinite;
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(145deg, #fff5a6 0%, #ffe26a 48%, #f3c841 100%);
+  filter: drop-shadow(0 5px 8px rgba(97, 78, 20, 0.28));
+  clip-path: polygon(
+    50% 0%,
+    61% 34%,
+    98% 34%,
+    68% 56%,
+    79% 94%,
+    50% 72%,
+    21% 94%,
+    32% 56%,
+    2% 34%,
+    39% 34%
+  );
+  pointer-events: none;
 }
 
-.photo-star-left {
+.photo-star-left-main {
   top: 34px;
-  left: -10px;
-  font-size: 46px;
+  left: -76px;
 }
 
-.photo-star-right {
-  right: -12px;
+.photo-star-left-small {
+  width: 22px;
+  height: 22px;
+}
+
+.photo-star-left-small-one {
+  top: 118px;
+  left: -38px;
+}
+
+.photo-star-left-small-two {
+  top: 176px;
+  left: -94px;
+  width: 18px;
+  height: 18px;
+}
+
+.photo-star-right-main {
+  right: -82px;
   bottom: 52px;
-  font-size: 54px;
-  animation-delay: 360ms;
+  width: 54px;
+  height: 54px;
 }
 
-.photo-star-left::after {
+.photo-star-right-small {
+  right: -38px;
+  bottom: 126px;
+  width: 22px;
+  height: 22px;
+}
+
+.photo-rail-streak {
   position: absolute;
-  top: 40px;
-  left: 42px;
-  color: #ffe26a;
-  content: "✦";
-  font-size: 22px;
-}
-
-.photo-star-right::after {
-  position: absolute;
-  right: 38px;
-  bottom: 40px;
-  color: #fff1a2;
-  content: "✦";
-  font-size: 20px;
-}
-
-/* Keep the stars layered above the slide without blocking its controls. */
-.photo-star {
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, #ffe26a 35%, transparent);
+  opacity: 0.92;
   pointer-events: none;
 }
 
-@keyframes photo-star-twinkle {
-  0%,
-  100% {
-    opacity: 0.74;
-    transform: rotate(-4deg) scale(0.96);
-  }
-  50% {
-    opacity: 1;
-    transform: rotate(4deg) scale(1.06);
-  }
+.photo-rail-streak-left {
+  top: 72px;
+  left: -70px;
+  width: 104px;
+  transform: rotate(34deg);
+  transform-origin: left center;
+}
+
+.photo-rail-streak-right {
+  right: -76px;
+  bottom: 94px;
+  width: 86px;
+  transform: rotate(-28deg);
+  transform-origin: right center;
 }
 
 .slider-dots,
@@ -1918,11 +1944,18 @@ ul {
 
 /* Homepage: school-news inspired grid, outline and offset-card system */
 .home-page {
-  background-color: #fffdf7;
+  display: flow-root;
+  background-color: #f9fcff;
   background-image:
-    linear-gradient(rgba(73, 157, 91, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(73, 157, 91, 0.07) 1px, transparent 1px);
-  background-size: 24px 24px;
+    linear-gradient(rgba(78, 157, 86, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(78, 157, 86, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(78, 157, 86, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(78, 157, 86, 0.05) 1px, transparent 1px);
+  background-size:
+    36px 36px,
+    36px 36px,
+    9px 9px,
+    9px 9px;
 }
 
 .home-page .photo-rail {
@@ -1932,6 +1965,7 @@ ul {
 }
 
 .home-page .photo-card {
+  z-index: 2;
   height: 560px;
   border: 2px solid #24743b;
   border-radius: 24px 24px 0 0;
@@ -1952,6 +1986,7 @@ ul {
 }
 
 .home-page .slider-dots {
+  z-index: 4;
   bottom: 22px;
 }
 
@@ -4403,16 +4438,49 @@ ul {
 }
 
 @media (max-width: 760px) {
-  .photo-star-left {
-    top: 28px;
-    left: 8px;
-    font-size: 32px;
+  .photo-rail-sparkles {
+    z-index: 3;
   }
 
-  .photo-star-right {
+  .photo-star-left-main {
+    top: 28px;
+    left: 8px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .photo-star-left-small-one {
+    top: 94px;
+    left: 14px;
+  }
+
+  .photo-star-left-small-two {
+    top: 140px;
+    left: 54px;
+  }
+
+  .photo-star-right-main {
     right: 8px;
     bottom: 46px;
-    font-size: 38px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .photo-star-right-small {
+    right: 26px;
+    bottom: 100px;
+  }
+
+  .photo-rail-streak-left {
+    top: 58px;
+    left: 20px;
+    width: 74px;
+  }
+
+  .photo-rail-streak-right {
+    right: 12px;
+    bottom: 78px;
+    width: 64px;
   }
 
   .branch-message-sparkles::before {
@@ -4432,10 +4500,6 @@ ul {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .photo-star {
-    animation: none;
-  }
-
   .branch-message-sparkles::before {
     animation: none;
   }

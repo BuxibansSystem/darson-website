@@ -186,8 +186,17 @@ onBeforeUnmount(() => window.clearInterval(carouselTimer));
         <img :src="slide.image" :alt="slide.title" />
       </article>
       <div class="photo-rail-sparkles" aria-hidden="true">
-        <span class="photo-star photo-star-left">✦</span>
-        <span class="photo-star photo-star-right">✧</span>
+        <span class="photo-star photo-star-left-main"></span>
+        <span
+          class="photo-star photo-star-left-small photo-star-left-small-one"
+        ></span>
+        <span
+          class="photo-star photo-star-left-small photo-star-left-small-two"
+        ></span>
+        <span class="photo-star photo-star-right-main"></span>
+        <span class="photo-star photo-star-right-small"></span>
+        <span class="photo-rail-streak photo-rail-streak-left"></span>
+        <span class="photo-rail-streak photo-rail-streak-right"></span>
       </div>
       <div class="slider-dots" aria-label="校園照片輪播">
         <button
