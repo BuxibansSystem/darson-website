@@ -3120,7 +3120,7 @@ ul {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #247786;
+  color: #2a7595;
   font-size: clamp(26px, 3vw, 38px);
   font-weight: 900;
 }
@@ -3131,13 +3131,13 @@ ul {
   height: 34px;
   flex: 0 0 auto;
   border-radius: 6px;
-  background: #7edbd5;
+  background: #80cfe0;
   content: "";
 }
 
 .branch-message-heading p {
   margin-top: 28px;
-  color: #247786;
+  color: #2a7595;
   font-size: clamp(18px, 2.2vw, 25px);
   font-weight: 900;
   line-height: 1.6;
@@ -3149,8 +3149,8 @@ ul {
   padding: clamp(36px, 5vw, 58px) clamp(42px, 7vw, 84px);
   border: 0;
   border-radius: 14px;
-  color: #3e727c;
-  background: #e1f7f6;
+  color: #366b82;
+  background: #e5f4fb;
   font-size: 16px;
   font-weight: 700;
   line-height: 2;
@@ -3159,7 +3159,7 @@ ul {
 .branch-message-quote::before,
 .branch-message-quote::after {
   position: absolute;
-  color: #9bdad8;
+  color: #8ccfdf;
   font-family: Georgia, serif;
   font-size: 76px;
   font-weight: 900;
@@ -3184,7 +3184,7 @@ ul {
 
 .branch-message-quote footer {
   margin-top: 18px;
-  color: #247786;
+  color: #2a7595;
   font-size: 14px;
   font-weight: 900;
   text-align: right;
