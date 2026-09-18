@@ -4198,3 +4198,87 @@ ul {
     height: 56px;
   }
 }
+
+/* Shared body-copy scale: keep labels compact while improving reading comfort. */
+.story-content > p:not(.story-eyebrow),
+.introduction-content > p:not(.introduction-eyebrow),
+.about-copy > p:not(.about-eyebrow),
+.team-heading > span,
+.branch-detail-copy > p:not(.branch-detail-eyebrow),
+.course-detail-copy > p:not(.course-detail-eyebrow),
+.program-stage > div:nth-child(2) > span,
+.news-directory-card p,
+.column-card > p,
+.contact-options p,
+.achievement-content-card p,
+.achievement-highlight-card > p {
+  font-size: 17px;
+}
+
+.feature-card p,
+.teaching-card .news-body > p,
+.testimonial-card blockquote,
+.course-description,
+.course-class-card > p:not(.course-class-label),
+.teaching-style-card p,
+.achievement-review-card blockquote,
+.faq-section dd {
+  font-size: 16px;
+}
+
+.literacy-grid span,
+.achievement-card > p:last-child,
+.news-body h3,
+.program-stage li,
+.course-stage-card li,
+.branch-card li,
+.directory-card dd,
+.branch-detail-info dd,
+.course-class-card dd,
+.course-detail-list li,
+.news-directory-card a,
+.column-card a,
+.contact-options a,
+.achievement-highlight-card a,
+.achievement-review-card footer,
+.testimonial-card footer,
+.consultation-steps span,
+.consultation-line-section strong,
+.consultation-line-section a {
+  font-size: 15px;
+}
+
+.about-copy blockquote,
+.belief-panel li,
+.branch-message-quote,
+.course-schedule-note {
+  font-size: 17px;
+}
+
+.faq-section dt {
+  font-size: 18px;
+}
+
+.footer-branches span,
+.footer-branches strong {
+  font-size: 15px;
+}
+
+.footer-branches small,
+.site-footer > p {
+  font-size: 14px;
+}
+
+.topbar p {
+  font-size: 15px;
+}
+
+.program-hero strong,
+.news-page-hero strong,
+.column-hero strong,
+.contact-hero strong,
+.about-hero strong,
+.achievements-hero strong,
+.branches-hero strong {
+  font-size: 18px;
+}
