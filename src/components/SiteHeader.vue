@@ -164,7 +164,7 @@ onBeforeUnmount(() => {
           class="nav-dropdown-link"
           to="/achievements"
           @click="closeMenu"
-          >成果見證</RouterLink
+          >成長見證</RouterLink
         >
         <button
           class="nav-dropdown-toggle"
