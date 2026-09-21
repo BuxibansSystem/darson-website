@@ -587,6 +587,10 @@ ul {
 }
 
 .achievement-value {
+  display: flex;
+  min-height: 68px;
+  align-items: center;
+  justify-content: center;
   color: #ffffff;
   font-size: clamp(46px, 5vw, 68px);
   font-weight: 900;
@@ -595,10 +599,10 @@ ul {
 }
 
 .achievement-value.is-text {
-  padding-top: 8px;
+  padding-top: 0;
   font-size: clamp(21px, 2.2vw, 29px);
   letter-spacing: 0.02em;
-  line-height: 1.35;
+  line-height: 1.2;
   white-space: nowrap;
 }
 
@@ -2052,15 +2056,7 @@ ul {
 .home-page .achievement-wall {
   border-top: 2px solid #174c2a;
   border-bottom: 2px solid #174c2a;
-  background-color: #2d7c44;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(120deg, #174c2a, #4a9a57);
-  background-size:
-    28px 28px,
-    28px 28px,
-    auto;
+  background: linear-gradient(120deg, #174c2a 0%, #286f3b 52%, #4a9a57 100%);
 }
 
 .home-page .story-section,
