@@ -167,6 +167,7 @@ const courseImages = computed(() => {
           <article
             v-for="detail in course.details"
             :key="detail.name"
+            :class="{ 'is-linked': detail.campaignId }"
             class="course-class-card"
           >
             <h3 v-if="detail.campaignId">
@@ -188,12 +189,22 @@ const courseImages = computed(() => {
                 <dd>{{ detail.features }}</dd>
               </div>
             </dl>
-            <a
-              href="https://lin.ee/5TCGxoS"
-              target="_blank"
-              rel="noopener noreferrer"
-              >預約免費試聽 <span>→</span></a
-            >
+            <div class="course-class-actions">
+              <a
+                class="course-class-action course-class-contact"
+                href="https://lin.ee/5TCGxoS"
+                target="_blank"
+                rel="noopener noreferrer"
+                >預約免費試聽 <span aria-hidden="true">→</span></a
+              >
+              <RouterLink
+                v-if="detail.campaignId"
+                class="course-class-action course-class-page-link"
+                :to="`/courses/${route.params.stageId}/${detail.campaignId}`"
+              >
+                查看課程專頁 <span aria-hidden="true">→</span>
+              </RouterLink>
+            </div>
           </article>
         </div>
       </div>
