@@ -3732,13 +3732,13 @@ ul {
 
 .course-class-page-link {
   border: 2px solid #f0d452;
-  color: #174c8d;
+  color: #8a5a2b;
   background: #fff4a8;
 }
 
 .course-class-page-link span {
-  color: #174c8d;
-  background: #cbdcf7;
+  color: #ffffff;
+  background: #c98c4a;
 }
 
 .course-class-contact:hover {
@@ -3754,15 +3754,15 @@ ul {
 }
 
 .course-class-page-link:hover {
-  color: #123b70;
-  border-color: #c7a818;
-  background: #f0d452;
+  color: #ffffff;
+  border-color: #8a5a2b;
+  background: #8a5a2b;
   transform: translateY(-2px);
 }
 
 .course-class-page-link:hover span {
-  color: #ffffff;
-  background: #174c8d;
+  color: #8a5a2b;
+  background: #ffffff;
 }
 
 .course-class-card h3 {
@@ -3874,8 +3874,8 @@ ul {
 
 .course-detail-list {
   width: min(1120px, 100%);
-  margin: 76px auto 0;
-  padding-top: 34px;
+  margin: 100px auto 0;
+  padding-top: 48px;
   border-top: 1px solid #b8d9b4;
 }
 
