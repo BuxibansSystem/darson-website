@@ -89,6 +89,14 @@ const imageModules = import.meta.glob(
 
 const branch = computed(() => branchDefinitions[route.params.branchId]);
 
+const mapEmbedUrl = computed(() => {
+  if (!branch.value) {
+    return "";
+  }
+
+  return `https://www.google.com/maps?q=${encodeURIComponent(branch.value.address)}&output=embed`;
+});
+
 const branchImages = computed(() => {
   if (!branch.value) {
     return [];
@@ -164,18 +172,16 @@ const branchImages = computed(() => {
                 >
               </dd>
             </div>
-            <div>
-              <dt>Google地標</dt>
-              <dd>
-                <a
-                  :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(branch.address)}`"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >點此查看地圖</a
-                >
-              </dd>
-            </div>
           </dl>
+          <div class="branch-detail-map">
+            <iframe
+              :src="mapEmbedUrl"
+              :title="`${branch.name} Google 地圖`"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
           <a
             class="branch-detail-contact"
             href="https://lin.ee/5TCGxoS"
