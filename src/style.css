@@ -2757,6 +2757,12 @@ ul {
 .achievement-review-card:nth-child(3n) {
   box-shadow: 7px 8px 0 #f2c8d0;
 }
+
+.achievements-page > .achievement-testimonials {
+  max-width: 1440px;
+  padding-inline: clamp(28px, 5vw, 72px);
+}
+
 .achievement-review-card blockquote {
   margin: 18px 0 0;
   color: #536158;

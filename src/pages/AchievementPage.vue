@@ -46,7 +46,7 @@ const reviews = [
 const sections = {
   honors: {
     eyebrow: "HONOR BOARD",
-    title: "榮譽榜——每一個名字，都是一段努力的故事",
+    title: "每一個名字，都是一段努力的故事",
     description:
       "這裡記錄了大昇歷屆學生的傑出成就：考上理想學校、在競賽中脫穎而出、或是突破自我最高紀錄的每一個時刻。我們為每一位大昇的孩子感到驕傲，也希望這些榮耀成為後來者的鼓勵與動力。",
     cards: [
@@ -57,7 +57,7 @@ const sections = {
   },
   "student-stories": {
     eyebrow: "STUDENT STORIES",
-    title: "學生故事——從迷茫到確定，他們的轉變你看見了嗎？",
+    title: "從迷茫到確定，他們的轉變你看見了嗎？",
     description:
       "每個孩子的學習旅程都不一樣。有人從不及格到班上前幾名，有人從討厭數學到愛上解題，有人在大昇找到了方向，也找到了自信。這些故事不是炫耀，而是真實發生在大昇課室裡的改變。",
     cards: [
@@ -80,7 +80,7 @@ const sections = {
   },
   "teacher-stories": {
     eyebrow: "TEACHER STORIES",
-    title: "導師經驗談——站在講台上，我看見了什麼",
+    title: "站在講台上，我看見了什麼",
     description:
       "大昇的老師不只教書，也在觀察、學習與反思。導師經驗談欄目，由各科教師分享教學現場的真實心得，包括如何引導不同個性的學生、如何處理學習瓶頸，以及那些讓他們深受感動的師生時刻。",
     cards: [
@@ -103,7 +103,7 @@ const sections = {
   },
   "parent-reviews": {
     eyebrow: "PARENT REVIEWS",
-    title: "家長推薦——他們說的，比我們說的更真實",
+    title: "他們說的，比我們說的更真實",
     description:
       "大昇最珍貴的口碑，來自每一位真實家長的親身經歷。以下均為 Google 地圖真實評論，未經修改。",
     reviews,
