@@ -3657,15 +3657,39 @@ ul {
   line-height: 1.45;
 }
 
-.course-detail-list h2::before {
+.course-title-stars {
+  position: relative;
   display: block;
-  width: 14px;
-  height: 32px;
-  flex: 0 0 auto;
-  border-radius: 5px;
-  background: #2fa9d4;
-  box-shadow: 0 8px 0 #bfeaf6;
-  content: "";
+  width: 46px;
+  height: 38px;
+  flex: 0 0 46px;
+}
+
+.course-title-stars span {
+  position: absolute;
+  display: block;
+  line-height: 1;
+}
+
+.course-title-stars span:nth-child(1) {
+  top: 6px;
+  left: 0;
+  color: #55c4d8;
+  font-size: 28px;
+}
+
+.course-title-stars span:nth-child(2) {
+  top: 16px;
+  left: 22px;
+  color: #ffe26a;
+  font-size: 18px;
+}
+
+.course-title-stars span:nth-child(3) {
+  top: 0;
+  left: 35px;
+  color: #f8c2d2;
+  font-size: 13px;
 }
 
 .course-schedule-note {

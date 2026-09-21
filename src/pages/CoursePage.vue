@@ -161,7 +161,14 @@ const courseImages = computed(() => {
 
       <div class="course-detail-list">
         <p>COURSE CATEGORIES</p>
-        <h2>{{ course.name }}班別</h2>
+        <h2>
+          {{ course.name }}班別
+          <span class="course-title-stars" aria-hidden="true">
+            <span>✦</span>
+            <span>✦</span>
+            <span>✦</span>
+          </span>
+        </h2>
         <p class="course-schedule-note">📅 {{ course.scheduleNote }}</p>
         <div class="course-class-grid">
           <article
