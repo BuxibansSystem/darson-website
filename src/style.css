@@ -3647,11 +3647,25 @@ ul {
 
 .course-detail-copy h2,
 .course-detail-list h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin-top: 13px;
   color: var(--green-deep);
   font-size: clamp(26px, 3vw, 38px);
   font-weight: 900;
   line-height: 1.45;
+}
+
+.course-detail-list h2::before {
+  display: block;
+  width: 14px;
+  height: 32px;
+  flex: 0 0 auto;
+  border-radius: 5px;
+  background: #2fa9d4;
+  box-shadow: 0 8px 0 #bfeaf6;
+  content: "";
 }
 
 .course-schedule-note {
@@ -3674,6 +3688,7 @@ ul {
   min-height: 360px;
   flex-direction: column;
   padding: 28px;
+  text-align: left;
   border: 2px solid #8cc9c2;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.86);
