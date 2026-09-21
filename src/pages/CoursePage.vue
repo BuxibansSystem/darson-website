@@ -4,9 +4,17 @@ import { RouterLink, useRoute } from "vue-router";
 
 const route = useRoute();
 
+const campaignIds = {
+  "升私中數學班": "private-math",
+  "資優數學班": "talent-math",
+  "六升七暑期先修班": "six-to-seven",
+  "九年級會考A++必勝班": "a-plus-plus",
+};
+
 const createCourseDetails = (courses, level) =>
   courses.map((name) => ({
     name,
+    campaignId: campaignIds[name] ?? null,
     description: `以${name}為核心，透過系統化教學、分層練習與定期追蹤，幫助孩子建立穩固觀念，逐步提升學習表現。`,
     audience: `希望強化${name}能力的${level}學生`,
     features: "觀念講解 × 分層練習 × 定期追蹤",
@@ -39,6 +47,7 @@ const courseDefinitions = {
       },
       {
         name: "升私中數學班",
+        campaignId: campaignIds["升私中數學班"],
         description:
           "針對升私中所需的數學能力與題型，系統整理關鍵觀念，搭配循序練習與解題策略，幫助孩子建立面對私中入學考的信心。",
         audience: "準備升讀私立國中的國小高年級學生",
@@ -46,6 +55,7 @@ const courseDefinitions = {
       },
       {
         name: "資優數學班",
+        campaignId: campaignIds["資優數學班"],
         description:
           "從數感、邏輯與多元解題切入，引導孩子挑戰更高層次的數學問題，在扎實基礎上培養靈活思考與解題能力。",
         audience: "喜歡挑戰數學、希望培養高階思維的國小生",
@@ -159,7 +169,13 @@ const courseImages = computed(() => {
             :key="detail.name"
             class="course-class-card"
           >
-            <h3>{{ detail.name }}</h3>
+            <h3 v-if="detail.campaignId">
+              <RouterLink
+                :to="`/courses/${route.params.stageId}/${detail.campaignId}`"
+                >{{ detail.name }}</RouterLink
+              >
+            </h3>
+            <h3 v-else>{{ detail.name }}</h3>
             <p class="course-class-label">班別介紹</p>
             <p>{{ detail.description }}</p>
             <dl>

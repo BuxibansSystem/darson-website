@@ -112,6 +112,12 @@ const courseStages = [
     ["數學班", "英文班", "物理班", "化學班"],
   ],
 ];
+const campaignCourseIds = {
+  "升私中數學班": "elementary/private-math",
+  "資優數學班": "elementary/talent-math",
+  "六升七暑期先修班": "junior-high/six-to-seven",
+  "九年級會考A++必勝班": "junior-high/a-plus-plus",
+};
 const branches = [
   [
     "明湖分校",
@@ -186,15 +192,21 @@ onBeforeUnmount(() => window.clearInterval(carouselTimer));
         <img :src="slide.image" :alt="slide.title" />
       </article>
       <div class="photo-rail-sparkles" aria-hidden="true">
-        <span class="photo-star photo-star-left-main"></span>
         <span
-          class="photo-star photo-star-left-small photo-star-left-small-one"
+          class="photo-star photo-star-six-point photo-star-left-main"
         ></span>
         <span
-          class="photo-star photo-star-left-small photo-star-left-small-two"
+          class="photo-star photo-star-five-point photo-star-left-small photo-star-left-small-one"
         ></span>
-        <span class="photo-star photo-star-right-main"></span>
-        <span class="photo-star photo-star-right-small"></span>
+        <span
+          class="photo-star photo-star-six-point photo-star-left-small photo-star-left-small-two"
+        ></span>
+        <span
+          class="photo-star photo-star-five-point photo-star-right-main"
+        ></span>
+        <span
+          class="photo-star photo-star-six-point photo-star-right-small"
+        ></span>
         <span class="photo-rail-streak photo-rail-streak-accent"></span>
       </div>
       <div class="slider-dots" aria-label="校園照片輪播">
@@ -358,7 +370,14 @@ onBeforeUnmount(() => window.clearInterval(carouselTimer));
           <span class="course-divider"></span>
           <p class="course-description">{{ stage[2] }}</p>
           <ul>
-            <li v-for="course in stage[3]" :key="course">{{ course }}</li>
+            <li v-for="course in stage[3]" :key="course">
+              <RouterLink
+                v-if="campaignCourseIds[course]"
+                :to="`/courses/${campaignCourseIds[course]}`"
+                >{{ course }}</RouterLink
+              >
+              <span v-else>{{ course }}</span>
+            </li>
           </ul>
         </article>
       </div>

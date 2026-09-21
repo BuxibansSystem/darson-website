@@ -108,17 +108,21 @@ const teamImages = [
           >我們的師資團隊由各科資深教師組成，熟悉各階段課綱變化與升學考試趨勢，並長期接受系統性教學培訓，將六大教學特色落實於每一堂課之中。</span
         >
       </div>
-      <div class="team-photo-strip" aria-label="團隊教學現場照片">
-        <figure v-for="image in teamImages" :key="image.src">
-          <img :src="image.src" :alt="image.alt" />
-        </figure>
-      </div>
       <div class="teaching-style-grid">
         <article
           v-for="(style, index) in teachingStyles"
           :key="style[0]"
           class="teaching-style-card"
         >
+          <figure
+            v-if="teamImages[index]"
+            class="teaching-style-photo"
+          >
+            <img
+              :src="teamImages[index].src"
+              :alt="teamImages[index].alt"
+            />
+          </figure>
           <span>{{ String(index + 1).padStart(2, "0") }}</span>
           <h3>{{ style[0] }}</h3>
           <p>{{ style[1] }}</p>

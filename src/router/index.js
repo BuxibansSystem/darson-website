@@ -3,6 +3,7 @@ import HomePage from "../pages/HomePage.vue";
 import AboutPage from "../pages/AboutPage.vue";
 import BranchPage from "../pages/BranchPage.vue";
 import CoursePage from "../pages/CoursePage.vue";
+import CampaignCoursePage from "../pages/CampaignCoursePage.vue";
 import NewsPage from "../pages/NewsPage.vue";
 import StudentsPage from "../pages/StudentsPage.vue";
 import AchievementPage from "../pages/AchievementPage.vue";
@@ -31,6 +32,7 @@ export default createRouter({
     { path: "/branches", redirect: "/branches/minghu" },
     { path: "/branches/:branchId", component: BranchPage },
     { path: "/courses", redirect: "/courses/elementary" },
+    { path: "/courses/:stageId/:courseId", component: CampaignCoursePage },
     { path: "/courses/:stageId", component: CoursePage },
     { path: "/news", component: NewsPage },
     { path: "/students", component: StudentsPage },
