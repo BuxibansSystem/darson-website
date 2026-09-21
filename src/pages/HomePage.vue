@@ -258,7 +258,7 @@ onBeforeUnmount(() => window.clearInterval(carouselTimer));
         </div>
         <div class="story-content">
           <p class="story-eyebrow">OUR EDUCATION STORY</p>
-          <h2>看見孩子的可能——大昇的教育故事</h2>
+          <h2>看見孩子的可能——<br />大昇的教育故事</h2>
           <p>
             三十年來，大昇始終秉持「做教育」的精神。我們相信每一個孩子都有無限潛力，也相信真正的教育，是在課業之外還能陪伴孩子成為更好的人。這支影片，帶你走進大昇的日常。
           </p>
