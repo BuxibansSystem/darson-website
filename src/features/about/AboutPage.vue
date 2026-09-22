@@ -1,5 +1,5 @@
 <script setup>
-import { assetUrl } from "../images.js";
+import { assetUrl } from "../../shared/images.js";
 const foundingImageOne = assetUrl("關於大昇/創辦理念/S__34603031_0.jpg");
 const foundingImageTwo = assetUrl("關於大昇/創辦理念/S__34603083_0.jpg");
 const teamImageTwo = assetUrl("關於大昇/團隊教學風格/S__34603055_0 (1).jpg");

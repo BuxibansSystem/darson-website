@@ -1,6 +1,6 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from "vue";
-import { assetUrl } from "../images.js";
+import { assetUrl } from "../../shared/images.js";
 const carousel0 = assetUrl("首頁/carousel_0.png");
 const carousel1 = assetUrl("首頁/carousel_1.jpg");
 const carousel2 = assetUrl("首頁/carousel_2.jpg");

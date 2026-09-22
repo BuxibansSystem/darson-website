@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomePage from "../pages/HomePage.vue";
-import AboutPage from "../pages/AboutPage.vue";
-import BranchPage from "../pages/BranchPage.vue";
-import CoursePage from "../pages/CoursePage.vue";
-import CampaignCoursePage from "../pages/CampaignCoursePage.vue";
-import NewsCategoryPage from "../pages/NewsCategoryPage.vue";
-import ColumnCategoryPage from "../pages/ColumnCategoryPage.vue";
-import AchievementPage from "../pages/AchievementPage.vue";
-import ContactPage from "../pages/ContactPage.vue";
+import HomePage from "../features/home/HomePage.vue";
+import AboutPage from "../features/about/AboutPage.vue";
+import BranchPage from "../features/branches/BranchPage.vue";
+import CoursePage from "../features/courses/CoursePage.vue";
+import CampaignCoursePage from "../features/courses/CampaignCoursePage.vue";
+import NewsCategoryPage from "../features/news/NewsCategoryPage.vue";
+import ColumnCategoryPage from "../features/students/ColumnCategoryPage.vue";
+import AchievementPage from "../features/achievements/AchievementPage.vue";
+import ContactPage from "../features/contact/ContactPage.vue";
 
 export default createRouter({
   history: createWebHistory(),

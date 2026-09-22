@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { useRoute, RouterLink } from "vue-router";
-import { imageModules } from "../images.js";
+import { imageModules } from "../../shared/images.js";
 
 const route = useRoute();
 

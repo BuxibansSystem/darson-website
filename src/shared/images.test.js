@@ -7,7 +7,7 @@ import { assetUrl, imagePaths, imageModules } from "./images.js";
 test("R2 圖片清單完整、網址可讀取，移除本機檔案前核對內容", async () => {
   assert.equal(new Set(imagePaths).size, imagePaths.length);
   assert.equal(Object.keys(imageModules).length, imagePaths.length);
-  const localDirectory = new URL("./assets/", import.meta.url);
+  const localDirectory = new URL("../assets/", import.meta.url);
   const hasLocalImages = existsSync(localDirectory);
   if (hasLocalImages) {
     const files = (await readdir(localDirectory, { recursive: true })).filter(
