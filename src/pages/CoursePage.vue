@@ -11,10 +11,34 @@ const campaignIds = {
   "九年級會考A++必勝班": "a-plus-plus",
 };
 
+const courseImageFolders = {
+  "數學班": "數學",
+  "英文班": "英文",
+  "升私中數學班": "升私中數學",
+  "資優數學班": "資優數學",
+  "六升七暑期先修班": "六升七先修",
+  "數資班": "數資",
+  "數A班": "數A",
+  "數私校班": "數私",
+  "英資班": "英資",
+  "英A班": "英A",
+  "國文班": "國文",
+  "生物班": "生物",
+  "理化班": "理化",
+  "九年級會考A++必勝班": "九年級會考班",
+  "物理班": "物理",
+  "化學班": "化學",
+};
+
+const courseImageFiles = {
+  "國小/數學": "S__34652246_0.jpg",
+};
+
 const createCourseDetails = (courses, level) =>
   courses.map((name) => ({
     name,
     campaignId: campaignIds[name] ?? null,
+    imageFolder: courseImageFolders[name] ?? null,
     description: `以${name}為核心，透過系統化教學、分層練習與定期追蹤，幫助孩子建立穩固觀念，逐步提升學習表現。`,
     audience: `希望強化${name}能力的${level}學生`,
     features: "觀念講解 × 分層練習 × 定期追蹤",
@@ -34,6 +58,7 @@ const courseDefinitions = {
       {
         name: "升私中數學班",
         campaignId: campaignIds["升私中數學班"],
+        imageFolder: courseImageFolders["升私中數學班"],
         description:
           "針對升私中所需的數學能力與題型，系統整理關鍵觀念，搭配循序練習與解題策略，幫助孩子建立面對私中入學考的信心。",
         audience: "準備升讀私立國中的國小高年級學生",
@@ -42,6 +67,7 @@ const courseDefinitions = {
       {
         name: "資優數學班",
         campaignId: campaignIds["資優數學班"],
+        imageFolder: courseImageFolders["資優數學班"],
         description:
           "從數感、邏輯與多元解題切入，引導孩子挑戰更高層次的數學問題，在扎實基礎上培養靈活思考與解題能力。",
         audience: "喜歡挑戰數學、希望培養高階思維的國小生",
@@ -49,6 +75,7 @@ const courseDefinitions = {
       },
       {
         name: "數學班",
+        imageFolder: courseImageFolders["數學班"],
         description:
           "數學不是死記公式，而是訓練邏輯思考的最好工具。大昇國小數學班採用系統化教學架構，從數感培養出發，循序漸進引導學生理解四則運算、分數、幾何等核心概念，搭配超前學習策略，讓孩子在學校數學課永遠從容應對。",
         audience: "數學觀念需要加強、或希望超前學習的國小生",
@@ -56,6 +83,7 @@ const courseDefinitions = {
       },
       {
         name: "英文班",
+        imageFolder: courseImageFolders["英文班"],
         description:
           "英語學習的最佳時期就是現在。大昇國小英文班從聽說讀寫全面切入，以豐富的教材與互動教學，幫助學生建立扎實的英文基礎。無論孩子是英文初學者或已有基礎，我們都能依程度安排最合適的班級。",
         audience: "英文基礎待建立、或希望強化閱讀與寫作的國小生",
@@ -121,6 +149,25 @@ const courseImages = computed(() => {
     .map(([, source]) => source)
     .slice(0, 4);
 });
+
+const getCourseImage = (detail) => {
+  if (!course.value || !detail.imageFolder) {
+    return "";
+  }
+
+  const folderPath = `/專業課程/${course.value.folder}/${detail.imageFolder}/`;
+  const preferredFile =
+    courseImageFiles[`${course.value.folder}/${detail.imageFolder}`];
+  const imageEntries = Object.entries(imageModules).filter(([path]) =>
+    path.includes(folderPath),
+  );
+  const imageEntry =
+    imageEntries.find(
+      ([path]) => preferredFile && path.endsWith(`/${preferredFile}`),
+    ) ?? imageEntries[0];
+
+  return imageEntry?.[1] ?? "";
+};
 </script>
 
 <template>
@@ -177,6 +224,15 @@ const courseImages = computed(() => {
             :class="{ 'is-linked': detail.campaignId }"
             class="course-class-card"
           >
+            <figure
+              v-if="getCourseImage(detail)"
+              class="course-class-photo"
+            >
+              <img
+                :src="getCourseImage(detail)"
+                :alt="`${detail.name}課堂照片`"
+              />
+            </figure>
             <h3 v-if="detail.campaignId">
               <RouterLink
                 :to="`/courses/${route.params.stageId}/${detail.campaignId}`"

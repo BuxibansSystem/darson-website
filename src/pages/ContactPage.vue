@@ -88,8 +88,8 @@ const questions = [
       </div>
       <dl>
         <template v-for="question in questions" :key="question[0]"
-          ><dt>{{ question[0] }}</dt>
-          <dd>{{ question[1] }}</dd></template
+          ><dt><span class="faq-prefix is-question">Q</span>{{ question[0] }}</dt>
+          <dd><span class="faq-prefix is-answer">A</span>{{ question[1] }}</dd></template
         >
       </dl>
     </section>

@@ -37,16 +37,24 @@ const closeMenu = () => {
   isAchievementMenuOpen.value = false;
 };
 
-const toggleBranchMenu = () => {
-  isBranchMenuOpen.value = !isBranchMenuOpen.value;
+const openDropdown = (menu) => {
+  if (menu === "branch") isBranchMenuOpen.value = true;
+  if (menu === "course") isCourseMenuOpen.value = true;
+  if (menu === "achievement") isAchievementMenuOpen.value = true;
 };
 
-const toggleCourseMenu = () => {
-  isCourseMenuOpen.value = !isCourseMenuOpen.value;
+const closeDropdown = (menu) => {
+  if (menu === "branch") isBranchMenuOpen.value = false;
+  if (menu === "course") isCourseMenuOpen.value = false;
+  if (menu === "achievement") isAchievementMenuOpen.value = false;
 };
 
-const toggleAchievementMenu = () => {
-  isAchievementMenuOpen.value = !isAchievementMenuOpen.value;
+const toggleDropdown = (menu) => {
+  if (menu === "branch") isBranchMenuOpen.value = !isBranchMenuOpen.value;
+  if (menu === "course") isCourseMenuOpen.value = !isCourseMenuOpen.value;
+  if (menu === "achievement") {
+    isAchievementMenuOpen.value = !isAchievementMenuOpen.value;
+  }
 };
 
 const handleScroll = () => {
@@ -109,8 +117,19 @@ onBeforeUnmount(() => {
         </svg>
       </RouterLink>
       <RouterLink to="/about" @click="closeMenu">關於大昇</RouterLink>
-      <div class="nav-dropdown" :class="{ 'is-open': isBranchMenuOpen }">
-        <RouterLink class="nav-dropdown-link" to="/branches" @click="closeMenu"
+      <div
+        class="nav-dropdown"
+        :class="{
+          'is-open': isBranchMenuOpen,
+        }"
+        @mouseenter="openDropdown('branch')"
+        @focusin="openDropdown('branch')"
+        @mouseleave="closeDropdown('branch')"
+      >
+        <RouterLink
+          class="nav-dropdown-link"
+          to="/branches"
+          @click="closeMenu"
           >分校資訊</RouterLink
         >
         <button
@@ -119,7 +138,7 @@ onBeforeUnmount(() => {
           :aria-expanded="isBranchMenuOpen"
           aria-controls="branch-navigation"
           :aria-label="isBranchMenuOpen ? '收合分校選單' : '展開分校選單'"
-          @click="toggleBranchMenu"
+          @click="toggleDropdown('branch')"
         >
           <span aria-hidden="true">⌄</span>
         </button>
@@ -133,8 +152,19 @@ onBeforeUnmount(() => {
           >
         </div>
       </div>
-      <div class="nav-dropdown" :class="{ 'is-open': isCourseMenuOpen }">
-        <RouterLink class="nav-dropdown-link" to="/courses" @click="closeMenu"
+      <div
+        class="nav-dropdown"
+        :class="{
+          'is-open': isCourseMenuOpen,
+        }"
+        @mouseenter="openDropdown('course')"
+        @focusin="openDropdown('course')"
+        @mouseleave="closeDropdown('course')"
+      >
+        <RouterLink
+          class="nav-dropdown-link"
+          to="/courses"
+          @click="closeMenu"
           >專業課程</RouterLink
         >
         <button
@@ -143,7 +173,7 @@ onBeforeUnmount(() => {
           :aria-expanded="isCourseMenuOpen"
           aria-controls="course-navigation"
           :aria-label="isCourseMenuOpen ? '收合課程選單' : '展開課程選單'"
-          @click="toggleCourseMenu"
+          @click="toggleDropdown('course')"
         >
           <span aria-hidden="true">⌄</span>
         </button>
@@ -159,7 +189,15 @@ onBeforeUnmount(() => {
       </div>
       <RouterLink to="/news" @click="closeMenu">最新消息</RouterLink>
       <RouterLink to="/students" @click="closeMenu">大昇專欄</RouterLink>
-      <div class="nav-dropdown" :class="{ 'is-open': isAchievementMenuOpen }">
+      <div
+        class="nav-dropdown"
+        :class="{
+          'is-open': isAchievementMenuOpen,
+        }"
+        @mouseenter="openDropdown('achievement')"
+        @focusin="openDropdown('achievement')"
+        @mouseleave="closeDropdown('achievement')"
+      >
         <RouterLink
           class="nav-dropdown-link"
           to="/achievements"
@@ -174,7 +212,7 @@ onBeforeUnmount(() => {
           :aria-label="
             isAchievementMenuOpen ? '收合成果見證選單' : '展開成果見證選單'
           "
-          @click="toggleAchievementMenu"
+          @click="toggleDropdown('achievement')"
         >
           <span aria-hidden="true">⌄</span>
         </button>
