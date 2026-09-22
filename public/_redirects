@@ -1,0 +1,21 @@
+# 舊網站 301 轉址：直接導向新站實際頁面
+# /courses05 內湖分校已停業，由 Pages Function 回傳 410 Gone。
+/courses02    /branches/donghu           301
+/courses01    /branches/xinyi            301
+/courses03    /branches/xinzhuang        301
+/courses04    /branches/minghu           301
+/school       /branches/minghu           301
+/news         /news/elementary           301
+/post         /students/learning-methods 301
+
+# 舊站內容與作者彙整頁
+/about-us             /about                       301
+/榮譽榜               /achievements/honors         301
+/post/學生訪談        /achievements/student-stories 301
+/category/最新消息    /news/elementary             301
+/author               /news/elementary             301
+/author/darsonadmin   /news/elementary             301
+
+# /contact 網址未變，不需轉址，避免自我轉址迴圈。
+# Cloudflare Pages SPA 萬用轉發必須放在最後。
+/*            /index.html                200
