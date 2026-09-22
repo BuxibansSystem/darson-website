@@ -10,7 +10,7 @@ const campaignDefinitions = {
     stageFolder: "國小",
     folder: "升私中數學",
     label: "ELEMENTARY SPECIAL PROGRAM",
-    color: "green",
+    color: "elementary",
     name: "升私中數學班",
     headline: "衝刺私立國中入學考，數學是決勝關鍵",
     paragraphs: [
@@ -31,7 +31,7 @@ const campaignDefinitions = {
     stageFolder: "國小",
     folder: "資優數學",
     label: "ELEMENTARY SPECIAL PROGRAM",
-    color: "blue",
+    color: "elementary",
     name: "資優數學班",
     headline: "孩子的數學天賦，值得被認真對待",
     paragraphs: [
@@ -52,7 +52,7 @@ const campaignDefinitions = {
     stageFolder: "國中",
     folder: "六升七先修",
     label: "JUNIOR HIGH SPECIAL PROGRAM",
-    color: "blue",
+    color: "junior",
     name: "六升七暑期全科先修班",
     headline: "升國中前的這個暑假，決定孩子國中三年的起跑姿態",
     paragraphs: [
@@ -73,7 +73,7 @@ const campaignDefinitions = {
     stageFolder: "國中",
     folder: "九年級會考班",
     label: "JUNIOR HIGH SPECIAL PROGRAM",
-    color: "green",
+    color: "junior",
     name: "九年級會考A++必勝班",
     headline: "九年級整學年，把國一到國三全部掌握——會考A++必勝班",
     paragraphs: [
@@ -108,24 +108,42 @@ const imageModules = import.meta.glob(
   { eager: true, import: "default" },
 );
 
+const campaignImageFiles = {
+  "six-to-seven": ["S__34603081_0.jpg", "S__34603082_0.jpg"],
+  "a-plus-plus": ["S__34652255_0.jpg", "S__34652277_0.jpg"],
+};
+
 const campaign = computed(() => campaignDefinitions[route.params.courseId]);
 
 const campaignImages = computed(() => {
   if (!campaign.value) return [];
 
-  return Object.entries(imageModules)
+  const imageEntries = Object.entries(imageModules)
     .filter(([path]) =>
       path.includes(
         `/專業課程/${campaign.value.stageFolder}/${campaign.value.folder}/`,
       ),
-    )
-    .map(([, source]) => source)
-    .slice(0, 3);
+    );
+  const preferredFiles = campaignImageFiles[route.params.courseId];
+
+  if (preferredFiles) {
+    return preferredFiles
+      .map((fileName) =>
+        imageEntries.find(([path]) => path.endsWith(`/${fileName}`))?.[1],
+      )
+      .filter(Boolean);
+  }
+
+  return imageEntries.map(([, source]) => source).slice(0, 3);
 });
 </script>
 
 <template>
-  <main v-if="campaign" class="campaign-page">
+  <main
+    v-if="campaign"
+    class="campaign-page"
+    :class="`is-${campaign.color}`"
+  >
     <section
       class="section campaign-hero"
       :class="`is-${campaign.color}`"

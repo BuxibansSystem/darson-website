@@ -32,6 +32,7 @@ const courseImageFolders = {
 
 const courseImageFiles = {
   "國小/數學": "S__34652246_0.jpg",
+  "國小/資優數學": "S__34603048_0.jpg",
 };
 
 const createCourseDetails = (courses, level) =>
