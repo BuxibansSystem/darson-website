@@ -4,8 +4,8 @@ import AboutPage from "../pages/AboutPage.vue";
 import BranchPage from "../pages/BranchPage.vue";
 import CoursePage from "../pages/CoursePage.vue";
 import CampaignCoursePage from "../pages/CampaignCoursePage.vue";
-import NewsPage from "../pages/NewsPage.vue";
-import StudentsPage from "../pages/StudentsPage.vue";
+import NewsCategoryPage from "../pages/NewsCategoryPage.vue";
+import ColumnCategoryPage from "../pages/ColumnCategoryPage.vue";
 import AchievementPage from "../pages/AchievementPage.vue";
 import ContactPage from "../pages/ContactPage.vue";
 
@@ -34,8 +34,10 @@ export default createRouter({
     { path: "/courses", redirect: "/courses/elementary" },
     { path: "/courses/:stageId/:courseId", component: CampaignCoursePage },
     { path: "/courses/:stageId", component: CoursePage },
-    { path: "/news", component: NewsPage },
-    { path: "/students", component: StudentsPage },
+    { path: "/news", redirect: "/news/elementary" },
+    { path: "/news/:sectionId", component: NewsCategoryPage },
+    { path: "/students", redirect: "/students/learning-methods" },
+    { path: "/students/:columnId", component: ColumnCategoryPage },
     { path: "/achievements", redirect: "/achievements/honors" },
     { path: "/achievements/:achievementId", component: AchievementPage },
     { path: "/contact", component: ContactPage },

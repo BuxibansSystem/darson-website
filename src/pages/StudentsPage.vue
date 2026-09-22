@@ -1,17 +1,23 @@
 <script setup>
 const columns = [
-  [
-    "學習方法",
-    "讀書不是時間堆砌的遊戲，方法對了，事半功倍。收錄教師團隊分享的學習技巧與讀書策略，幫助學生找到最適合自己的學習方式。",
-  ],
-  [
-    "升學策略",
-    "面對升學選擇，資訊與策略同樣重要。從會考、學測到志願選填，陪家長與孩子一步步做好準備。",
-  ],
-  [
-    "親子教育",
-    "孩子成長的每一段路，都需要理解與陪伴。一起建立更自在的親子溝通，讓學習成為共同前進的旅程。",
-  ],
+  {
+    id: "learning-methods",
+    title: "學習方法",
+    description:
+      "讀書不是時間堆砌的遊戲，方法對了，事半功倍。收錄教師團隊分享的學習技巧與讀書策略，幫助學生找到最適合自己的學習方式。",
+  },
+  {
+    id: "admissions-strategy",
+    title: "升學策略",
+    description:
+      "面對升學選擇，資訊與策略同樣重要。從會考、學測到志願選填，陪家長與孩子一步步做好準備。",
+  },
+  {
+    id: "parent-education",
+    title: "親子教育",
+    description:
+      "孩子成長的每一段路，都需要理解與陪伴。一起建立更自在的親子溝通，讓學習成為共同前進的旅程。",
+  },
 ];
 </script>
 <template>
@@ -24,14 +30,15 @@ const columns = [
     <section class="section column-grid">
       <article
         v-for="(column, index) in columns"
-        :key="column[0]"
+        :id="column.id"
+        :key="column.id"
         class="column-card"
       >
         <span>0{{ index + 1 }}</span>
-        <h2>{{ column[0] }}</h2>
-        <p>{{ column[1] }}</p>
-        <ul>
-          <li v-for="item in column[2]" :key="item">
+        <h2>{{ column.title }}</h2>
+        <p>{{ column.description }}</p>
+        <ul v-if="column.items">
+          <li v-for="item in column.items" :key="item">
             <a href="#column">{{ item }} <b>→</b></a>
           </li>
         </ul>

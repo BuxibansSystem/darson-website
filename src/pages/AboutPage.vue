@@ -45,9 +45,9 @@ const foundingImages = [
 ];
 
 const teamImages = [
+  { src: teamImageFour, alt: "課堂中的教學引導" },
   { src: teamImageTwo, alt: "學生專注完成課堂練習" },
   { src: teamImageThree, alt: "老師與學生一起討論題目" },
-  { src: teamImageFour, alt: "課堂中的教學引導" },
 ];
 </script>
 

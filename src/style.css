@@ -161,19 +161,26 @@ ul {
   object-fit: contain;
 }
 
-.nav-shell a {
+.nav-shell a,
+.nav-shell .nav-dropdown-parent {
   display: inline-flex;
   align-items: center;
   min-height: 36px;
   padding: 0 12px;
   border-radius: 999px;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
   transition:
     color 180ms ease,
     background 180ms ease,
     transform 180ms ease;
 }
 
-.nav-shell a:hover {
+.nav-shell a:hover,
+.nav-shell .nav-dropdown-parent:hover {
   color: #ffffff;
   background: #4ca858;
   transform: translateY(-1px);
@@ -193,6 +200,10 @@ ul {
 .nav-dropdown-link {
   border-radius: 999px 0 0 999px !important;
   padding-right: 7px !important;
+}
+
+.nav-dropdown-parent {
+  white-space: nowrap;
 }
 
 .nav-dropdown-toggle {
@@ -2379,6 +2390,43 @@ ul {
   max-width: 1100px;
   margin-inline: auto;
 }
+
+.news-category-directory,
+.column-category-grid {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 760px;
+}
+
+.news-category-directory .news-directory-card,
+.column-category-grid .column-card {
+  min-height: 0;
+}
+
+.news-category-directory li,
+.column-category-grid li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0 0;
+}
+
+.news-category-directory li b,
+.column-category-grid li b {
+  color: var(--green);
+  font-size: 18px;
+}
+
+.news-category-directory .news-directory-card > a,
+.column-category-grid .column-card > a {
+  justify-content: center;
+  margin-top: 24px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--green-deep);
+}
+
 .news-directory-card,
 .column-card,
 .contact-options article {
@@ -3019,6 +3067,17 @@ ul {
 .contact-page > .contact-options,
 .contact-page > .faq-section {
   background: transparent;
+}
+
+.news-category-page > .news-page-hero,
+.column-category-page > .column-hero {
+  min-height: 220px;
+  padding-block: 32px;
+}
+
+.news-category-page > .news-category-directory,
+.column-category-page > .column-category-grid {
+  padding-top: 28px;
 }
 
 .teaching-style-card > span {
@@ -4272,6 +4331,7 @@ ul {
   }
 
   .nav-shell a,
+  .nav-shell .nav-dropdown-parent,
   .nav-shell .home-link {
     width: 100%;
     min-height: 42px;

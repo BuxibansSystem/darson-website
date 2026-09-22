@@ -5,6 +5,8 @@ import logo from "../assets/共用/logo.png";
 const isMenuOpen = ref(false);
 const isBranchMenuOpen = ref(false);
 const isCourseMenuOpen = ref(false);
+const isNewsMenuOpen = ref(false);
+const isColumnMenuOpen = ref(false);
 const isAchievementMenuOpen = ref(false);
 const isHeaderHidden = ref(false);
 let lastScrollY = 0;
@@ -23,6 +25,18 @@ const courseStages = [
   { name: "高中課程", id: "senior-high" },
 ];
 
+const newsSections = [
+  { name: "國小專區", id: "elementary" },
+  { name: "國中專區", id: "junior-high" },
+  { name: "高中專區", id: "senior-high" },
+];
+
+const columnSections = [
+  { name: "學習方法", id: "learning-methods" },
+  { name: "升學策略", id: "admissions-strategy" },
+  { name: "親子教育", id: "parent-education" },
+];
+
 const achievementSections = [
   { name: "榮譽榜", id: "honors" },
   { name: "學生故事", id: "student-stories" },
@@ -34,24 +48,32 @@ const closeMenu = () => {
   isMenuOpen.value = false;
   isBranchMenuOpen.value = false;
   isCourseMenuOpen.value = false;
+  isNewsMenuOpen.value = false;
+  isColumnMenuOpen.value = false;
   isAchievementMenuOpen.value = false;
 };
 
 const openDropdown = (menu) => {
   if (menu === "branch") isBranchMenuOpen.value = true;
   if (menu === "course") isCourseMenuOpen.value = true;
+  if (menu === "news") isNewsMenuOpen.value = true;
+  if (menu === "column") isColumnMenuOpen.value = true;
   if (menu === "achievement") isAchievementMenuOpen.value = true;
 };
 
 const closeDropdown = (menu) => {
   if (menu === "branch") isBranchMenuOpen.value = false;
   if (menu === "course") isCourseMenuOpen.value = false;
+  if (menu === "news") isNewsMenuOpen.value = false;
+  if (menu === "column") isColumnMenuOpen.value = false;
   if (menu === "achievement") isAchievementMenuOpen.value = false;
 };
 
 const toggleDropdown = (menu) => {
   if (menu === "branch") isBranchMenuOpen.value = !isBranchMenuOpen.value;
   if (menu === "course") isCourseMenuOpen.value = !isCourseMenuOpen.value;
+  if (menu === "news") isNewsMenuOpen.value = !isNewsMenuOpen.value;
+  if (menu === "column") isColumnMenuOpen.value = !isColumnMenuOpen.value;
   if (menu === "achievement") {
     isAchievementMenuOpen.value = !isAchievementMenuOpen.value;
   }
@@ -187,8 +209,76 @@ onBeforeUnmount(() => {
           >
         </div>
       </div>
-      <RouterLink to="/news" @click="closeMenu">最新消息</RouterLink>
-      <RouterLink to="/students" @click="closeMenu">大昇專欄</RouterLink>
+      <div
+        class="nav-dropdown"
+        :class="{ 'is-open': isNewsMenuOpen }"
+        @mouseenter="openDropdown('news')"
+        @focusin="openDropdown('news')"
+        @mouseleave="closeDropdown('news')"
+      >
+        <button
+          class="nav-dropdown-link nav-dropdown-parent"
+          type="button"
+          :aria-expanded="isNewsMenuOpen"
+          @click="toggleDropdown('news')"
+        >
+          最新消息
+        </button>
+        <button
+          class="nav-dropdown-toggle"
+          type="button"
+          :aria-expanded="isNewsMenuOpen"
+          aria-controls="news-navigation"
+          :aria-label="isNewsMenuOpen ? '收合最新消息選單' : '展開最新消息選單'"
+          @click="toggleDropdown('news')"
+        >
+          <span aria-hidden="true">⌄</span>
+        </button>
+        <div id="news-navigation" class="nav-dropdown-menu">
+          <RouterLink
+            v-for="section in newsSections"
+            :key="section.id"
+            :to="`/news/${section.id}`"
+            @click="closeMenu"
+            >{{ section.name }}</RouterLink
+          >
+        </div>
+      </div>
+      <div
+        class="nav-dropdown"
+        :class="{ 'is-open': isColumnMenuOpen }"
+        @mouseenter="openDropdown('column')"
+        @focusin="openDropdown('column')"
+        @mouseleave="closeDropdown('column')"
+      >
+        <button
+          class="nav-dropdown-link nav-dropdown-parent"
+          type="button"
+          :aria-expanded="isColumnMenuOpen"
+          @click="toggleDropdown('column')"
+        >
+          大昇專欄
+        </button>
+        <button
+          class="nav-dropdown-toggle"
+          type="button"
+          :aria-expanded="isColumnMenuOpen"
+          aria-controls="column-navigation"
+          :aria-label="isColumnMenuOpen ? '收合大昇專欄選單' : '展開大昇專欄選單'"
+          @click="toggleDropdown('column')"
+        >
+          <span aria-hidden="true">⌄</span>
+        </button>
+        <div id="column-navigation" class="nav-dropdown-menu">
+          <RouterLink
+            v-for="section in columnSections"
+            :key="section.id"
+            :to="`/students/${section.id}`"
+            @click="closeMenu"
+            >{{ section.name }}</RouterLink
+          >
+        </div>
+      </div>
       <div
         class="nav-dropdown"
         :class="{
