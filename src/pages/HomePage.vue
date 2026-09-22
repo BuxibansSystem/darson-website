@@ -1,13 +1,14 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from "vue";
-import carousel0 from "../assets/首頁/carousel_0.png";
-import carousel1 from "../assets/首頁/carousel_1.jpg";
-import carousel2 from "../assets/首頁/carousel_2.jpg";
-import carousel3 from "../assets/首頁/carousel_3.jpg";
-import carousel4 from "../assets/首頁/carousel_4.jpg";
-import carousel5 from "../assets/首頁/carousel_5.jpg";
-import educationStoryImage from "../assets/首頁/education-story.jpg";
-import introductionImage from "../assets/關於大昇/dason-introduction.jpg";
+import { assetUrl } from "../images.js";
+const carousel0 = assetUrl("首頁/carousel_0.png");
+const carousel1 = assetUrl("首頁/carousel_1.jpg");
+const carousel2 = assetUrl("首頁/carousel_2.jpg");
+const carousel3 = assetUrl("首頁/carousel_3.jpg");
+const carousel4 = assetUrl("首頁/carousel_4.jpg");
+const carousel5 = assetUrl("首頁/carousel_5.jpg");
+const educationStoryImage = assetUrl("首頁/education-story.jpg");
+const introductionImage = assetUrl("關於大昇/dason-introduction.jpg");
 
 const heroSlides = [
   { title: "大昇升學榮譽榜", image: carousel0 },

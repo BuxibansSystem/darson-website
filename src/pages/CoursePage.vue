@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { RouterLink, useRoute } from "vue-router";
+import { imageModules } from "../images.js";
 
 const route = useRoute();
 
@@ -132,11 +133,6 @@ const courseDefinitions = {
     ),
   },
 };
-
-const imageModules = import.meta.glob(
-  "../assets/專業課程/*/*/*.{jpg,jpeg,png,webp}",
-  { eager: true, import: "default" },
-);
 
 const course = computed(() => courseDefinitions[route.params.stageId]);
 

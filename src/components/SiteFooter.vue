@@ -1,5 +1,6 @@
 <script setup>
-import logo from "../assets/共用/logo.png";
+import { assetUrl } from "../images.js";
+const logo = assetUrl("共用/logo.png");
 
 const branches = [
   ["明湖分校", "02-2631-0572", "臺北市內湖區康寧路三段189巷11弄1號2樓"],

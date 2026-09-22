@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { RouterLink, useRoute } from "vue-router";
+import { imageModules } from "../images.js";
 
 const route = useRoute();
 
@@ -102,11 +103,6 @@ const campaignDefinitions = {
     urgency: "立即預約，了解完整學年課程規劃！",
   },
 };
-
-const imageModules = import.meta.glob(
-  "../assets/專業課程/*/*/*.{jpg,jpeg,png,webp}",
-  { eager: true, import: "default" },
-);
 
 const campaignImageFiles = {
   "six-to-seven": ["S__34603081_0.jpg", "S__34603082_0.jpg"],

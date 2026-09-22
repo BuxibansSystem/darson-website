@@ -1,9 +1,10 @@
 <script setup>
-import foundingImageOne from "../assets/關於大昇/創辦理念/S__34603031_0.jpg";
-import foundingImageTwo from "../assets/關於大昇/創辦理念/S__34603083_0.jpg";
-import teamImageTwo from "../assets/關於大昇/團隊教學風格/S__34603055_0 (1).jpg";
-import teamImageThree from "../assets/關於大昇/團隊教學風格/S__34603071_0 (1).jpg";
-import teamImageFour from "../assets/關於大昇/團隊教學風格/S__34652247_0 (1).jpg";
+import { assetUrl } from "../images.js";
+const foundingImageOne = assetUrl("關於大昇/創辦理念/S__34603031_0.jpg");
+const foundingImageTwo = assetUrl("關於大昇/創辦理念/S__34603083_0.jpg");
+const teamImageTwo = assetUrl("關於大昇/團隊教學風格/S__34603055_0 (1).jpg");
+const teamImageThree = assetUrl("關於大昇/團隊教學風格/S__34603071_0 (1).jpg");
+const teamImageFour = assetUrl("關於大昇/團隊教學風格/S__34652247_0 (1).jpg");
 
 const beliefs = [
   "學習是一場長跑，方法對了，每個孩子都能跑得更遠。",

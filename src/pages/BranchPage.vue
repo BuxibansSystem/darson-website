@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { useRoute, RouterLink } from "vue-router";
+import { imageModules } from "../images.js";
 
 const route = useRoute();
 
@@ -81,11 +82,6 @@ const branchDefinitions = {
     director: "永和分校 主任",
   },
 };
-
-const imageModules = import.meta.glob(
-  "../assets/分校資訊/*/教室環境/*.{jpg,jpeg,png,webp}",
-  { eager: true, import: "default" },
-);
 
 const branch = computed(() => branchDefinitions[route.params.branchId]);
 

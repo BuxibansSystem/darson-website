@@ -19,6 +19,16 @@ npm run build
 
 建置結果位於 `dist/`，建置後可用 `npm run preview` 預覽。
 
+## 圖片（Cloudflare R2）
+
+開發與正式網站皆直接讀取 `darson-official-website-image` bucket 的公開圖片，不需要本機 `src/assets/`。
+
+- 公開網址及圖片清單集中在 `src/images.js`，R2 object key 以 `assets/` 開頭。
+- 新增圖片：上傳至 R2 的對應目錄，並更新 `imagePaths`；頁面使用 `assetUrl("共用/logo.png")` 取得網址。
+- 課程目錄維持 `assets/專業課程/<學段>/<課程>/`，分校維持 `assets/分校資訊/<分校>/教室環境/`。改名時同步頁面 folder 映射與課程指定檔名。
+- 目前使用 `r2.dev` 開發網址（有流量限制）；正式營運請為 bucket 綁定自訂網域，再修改 `src/images.js` 的 `baseUrl`，保留 `/assets` 路徑。
+- 執行 `node --test src/images.test.js` 可驗證所有圖片連結；本機圖片仍存在時也會核對清單及遠端檔案內容。
+
 ## 專案重點
 
 - `src/main.js`：應用程式入口，載入路由與全站樣式

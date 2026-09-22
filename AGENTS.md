@@ -18,3 +18,4 @@
 - 環境與啟動指令見 `README.md`；使用 npm 與 `package-lock.json`。
 - 目前沒有 test、lint、typecheck 腳本；前端變更執行 `npm run build`，再用瀏覽器驗證受影響路由與互動。局部格式檢查可用 `npx prettier --check <檔案>`。
 - Vite dev／preview 不執行 Pages Functions 或 `_redirects`，建置也不驗證該函式；部署層狀態碼與轉址需另外驗證。
+- 不用幫我部署到 cloudflare page

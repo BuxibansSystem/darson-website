@@ -1,6 +1,7 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from "vue";
-import logo from "../assets/共用/logo.png";
+import { assetUrl } from "../images.js";
+const logo = assetUrl("共用/logo.png");
 
 const isMenuOpen = ref(false);
 const isBranchMenuOpen = ref(false);
