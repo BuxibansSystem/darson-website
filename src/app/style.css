@@ -4724,6 +4724,42 @@ ul {
   font-size: 18px;
 }
 
+@media (max-width: 720px) {
+  .home-page .testimonials-grid {
+    gap: 16px;
+    align-items: center;
+    margin-top: 32px;
+    margin-right: -22px;
+    margin-left: -22px;
+    padding-right: max(26px, calc((100vw - 390px) / 2));
+    padding-left: max(26px, calc((100vw - 390px) / 2));
+  }
+
+  .home-page .testimonial-card {
+    width: min(390px, calc(100vw - 52px));
+    min-width: min(390px, calc(100vw - 52px));
+    min-height: 320px;
+    padding: 28px 24px 22px;
+    scroll-snap-align: center;
+  }
+
+  .home-page .testimonial-card .quote-mark {
+    top: 10px;
+    right: 18px;
+    font-size: 66px;
+  }
+
+  .home-page .testimonial-card blockquote {
+    margin-top: 18px;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .home-page .testimonial-card footer {
+    padding-top: 16px;
+  }
+}
+
 @media (max-width: 760px) {
   .photo-star-left-main {
     top: 28px;
