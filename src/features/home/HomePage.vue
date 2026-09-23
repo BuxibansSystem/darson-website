@@ -405,8 +405,11 @@ onBeforeUnmount(() => window.clearInterval(carouselTimer));
               <li><span>●</span>{{ branch[3] }}</li>
             </ul>
           </div>
-          <a :href="`tel:${branch[2].replaceAll('-', '')}`"
-            >前往課程 課程資訊 <span>›</span></a
+          <a
+            href="https://lin.ee/5TCGxoS"
+            target="_blank"
+            rel="noopener noreferrer"
+            >立即聯絡 <span>→</span></a
           >
         </article>
       </div>
