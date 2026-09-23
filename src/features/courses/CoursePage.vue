@@ -69,7 +69,6 @@ const courseDefinitions = {
       {
         name: "資優數學班",
         campaignId: campaignIds["資優數學班"],
-        imageFolder: courseImageFolders["資優數學班"],
         description:
           "從數感、邏輯與多元解題切入，引導孩子挑戰更高層次的數學問題，在扎實基礎上培養靈活思考與解題能力。",
         audience: "喜歡挑戰數學、希望培養高階思維的國小生",
