@@ -54,7 +54,35 @@ const closeMenu = () => {
   isAchievementMenuOpen.value = false;
 };
 
+const toggleMainMenu = () => {
+  if (isMenuOpen.value) {
+    closeMenu();
+    return;
+  }
+
+  isMenuOpen.value = true;
+  isBranchMenuOpen.value = false;
+  isCourseMenuOpen.value = false;
+  isNewsMenuOpen.value = false;
+  isColumnMenuOpen.value = false;
+  isAchievementMenuOpen.value = false;
+};
+
+const isMobileViewport = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(max-width: 720px)").matches;
+
 const openDropdown = (menu) => {
+  if (isMobileViewport()) {
+    return;
+  }
+
+  isBranchMenuOpen.value = false;
+  isCourseMenuOpen.value = false;
+  isNewsMenuOpen.value = false;
+  isColumnMenuOpen.value = false;
+  isAchievementMenuOpen.value = false;
+
   if (menu === "branch") isBranchMenuOpen.value = true;
   if (menu === "course") isCourseMenuOpen.value = true;
   if (menu === "news") isNewsMenuOpen.value = true;
@@ -63,6 +91,10 @@ const openDropdown = (menu) => {
 };
 
 const closeDropdown = (menu) => {
+  if (isMobileViewport()) {
+    return;
+  }
+
   if (menu === "branch") isBranchMenuOpen.value = false;
   if (menu === "course") isCourseMenuOpen.value = false;
   if (menu === "news") isNewsMenuOpen.value = false;
@@ -71,13 +103,42 @@ const closeDropdown = (menu) => {
 };
 
 const toggleDropdown = (menu) => {
-  if (menu === "branch") isBranchMenuOpen.value = !isBranchMenuOpen.value;
-  if (menu === "course") isCourseMenuOpen.value = !isCourseMenuOpen.value;
-  if (menu === "news") isNewsMenuOpen.value = !isNewsMenuOpen.value;
-  if (menu === "column") isColumnMenuOpen.value = !isColumnMenuOpen.value;
-  if (menu === "achievement") {
-    isAchievementMenuOpen.value = !isAchievementMenuOpen.value;
+  const wasOpen =
+    menu === "branch"
+      ? isBranchMenuOpen.value
+      : menu === "course"
+        ? isCourseMenuOpen.value
+        : menu === "news"
+          ? isNewsMenuOpen.value
+          : menu === "column"
+            ? isColumnMenuOpen.value
+            : isAchievementMenuOpen.value;
+
+  isBranchMenuOpen.value = false;
+  isCourseMenuOpen.value = false;
+  isNewsMenuOpen.value = false;
+  isColumnMenuOpen.value = false;
+  isAchievementMenuOpen.value = false;
+
+  if (wasOpen) {
+    return;
   }
+
+  if (menu === "branch") isBranchMenuOpen.value = true;
+  if (menu === "course") isCourseMenuOpen.value = true;
+  if (menu === "news") isNewsMenuOpen.value = true;
+  if (menu === "column") isColumnMenuOpen.value = true;
+  if (menu === "achievement") isAchievementMenuOpen.value = true;
+};
+
+const handleDropdownLinkClick = (event, menu) => {
+  if (isMobileViewport()) {
+    event.preventDefault();
+    toggleDropdown(menu);
+    return;
+  }
+
+  closeMenu();
 };
 
 const handleScroll = () => {
@@ -85,6 +146,10 @@ const handleScroll = () => {
     window.scrollY,
     document.documentElement.scrollTop,
   );
+
+  if (currentScrollY !== lastScrollY) {
+    closeMenu();
+  }
 
   if (currentScrollY <= 24) {
     isHeaderHidden.value = false;
@@ -121,7 +186,7 @@ onBeforeUnmount(() => {
         :aria-expanded="isMenuOpen"
         aria-controls="main-navigation"
         :aria-label="isMenuOpen ? '關閉導覽選單' : '開啟導覽選單'"
-        @click="isMenuOpen = !isMenuOpen"
+        @click="toggleMainMenu"
       >
         <span></span>
         <span></span>
@@ -152,19 +217,13 @@ onBeforeUnmount(() => {
         <RouterLink
           class="nav-dropdown-link"
           to="/branches"
-          @click="closeMenu"
-          >分校資訊</RouterLink
-        >
-        <button
-          class="nav-dropdown-toggle"
-          type="button"
           :aria-expanded="isBranchMenuOpen"
           aria-controls="branch-navigation"
           :aria-label="isBranchMenuOpen ? '收合分校選單' : '展開分校選單'"
-          @click="toggleDropdown('branch')"
+          @click="handleDropdownLinkClick($event, 'branch')"
         >
-          <span aria-hidden="true">⌄</span>
-        </button>
+          分校資訊 <span class="nav-dropdown-arrow" aria-hidden="true">⌄</span>
+        </RouterLink>
         <div id="branch-navigation" class="nav-dropdown-menu">
           <RouterLink
             v-for="branch in branches"
@@ -187,19 +246,13 @@ onBeforeUnmount(() => {
         <RouterLink
           class="nav-dropdown-link"
           to="/courses"
-          @click="closeMenu"
-          >專業課程</RouterLink
-        >
-        <button
-          class="nav-dropdown-toggle"
-          type="button"
           :aria-expanded="isCourseMenuOpen"
           aria-controls="course-navigation"
           :aria-label="isCourseMenuOpen ? '收合課程選單' : '展開課程選單'"
-          @click="toggleDropdown('course')"
+          @click="handleDropdownLinkClick($event, 'course')"
         >
-          <span aria-hidden="true">⌄</span>
-        </button>
+          專業課程 <span class="nav-dropdown-arrow" aria-hidden="true">⌄</span>
+        </RouterLink>
         <div id="course-navigation" class="nav-dropdown-menu">
           <RouterLink
             v-for="stage in courseStages"
@@ -221,19 +274,11 @@ onBeforeUnmount(() => {
           class="nav-dropdown-link nav-dropdown-parent"
           type="button"
           :aria-expanded="isNewsMenuOpen"
-          @click="toggleDropdown('news')"
-        >
-          最新消息
-        </button>
-        <button
-          class="nav-dropdown-toggle"
-          type="button"
-          :aria-expanded="isNewsMenuOpen"
           aria-controls="news-navigation"
           :aria-label="isNewsMenuOpen ? '收合最新消息選單' : '展開最新消息選單'"
           @click="toggleDropdown('news')"
         >
-          <span aria-hidden="true">⌄</span>
+          最新消息 <span class="nav-dropdown-arrow" aria-hidden="true">⌄</span>
         </button>
         <div id="news-navigation" class="nav-dropdown-menu">
           <RouterLink
@@ -256,19 +301,11 @@ onBeforeUnmount(() => {
           class="nav-dropdown-link nav-dropdown-parent"
           type="button"
           :aria-expanded="isColumnMenuOpen"
-          @click="toggleDropdown('column')"
-        >
-          大昇專欄
-        </button>
-        <button
-          class="nav-dropdown-toggle"
-          type="button"
-          :aria-expanded="isColumnMenuOpen"
           aria-controls="column-navigation"
           :aria-label="isColumnMenuOpen ? '收合大昇專欄選單' : '展開大昇專欄選單'"
           @click="toggleDropdown('column')"
         >
-          <span aria-hidden="true">⌄</span>
+          大昇專欄 <span class="nav-dropdown-arrow" aria-hidden="true">⌄</span>
         </button>
         <div id="column-navigation" class="nav-dropdown-menu">
           <RouterLink
@@ -292,21 +329,15 @@ onBeforeUnmount(() => {
         <RouterLink
           class="nav-dropdown-link"
           to="/achievements"
-          @click="closeMenu"
-          >成長見證</RouterLink
-        >
-        <button
-          class="nav-dropdown-toggle"
-          type="button"
           :aria-expanded="isAchievementMenuOpen"
           aria-controls="achievement-navigation"
           :aria-label="
             isAchievementMenuOpen ? '收合成果見證選單' : '展開成果見證選單'
           "
-          @click="toggleDropdown('achievement')"
+          @click="handleDropdownLinkClick($event, 'achievement')"
         >
-          <span aria-hidden="true">⌄</span>
-        </button>
+          成長見證 <span class="nav-dropdown-arrow" aria-hidden="true">⌄</span>
+        </RouterLink>
         <div id="achievement-navigation" class="nav-dropdown-menu">
           <RouterLink
             v-for="section in achievementSections"

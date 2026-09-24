@@ -198,52 +198,30 @@ ul {
 }
 
 .nav-dropdown-link {
-  border-radius: 999px 0 0 999px !important;
-  padding-right: 7px !important;
+  border-radius: 999px !important;
+  padding-right: 12px !important;
 }
 
 .nav-dropdown-parent {
   white-space: nowrap;
 }
 
-.nav-dropdown-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 25px;
-  min-height: 36px;
-  margin-left: -1px;
-  padding: 0 8px 0 0;
-  border: 0;
-  border-radius: 0 999px 999px 0;
-  color: inherit;
-  background: transparent;
-  font: inherit;
-  cursor: pointer;
-  transition:
-    color 180ms ease,
-    background 180ms ease;
-}
-
-.nav-dropdown-toggle span {
-  display: block;
+.nav-dropdown-arrow {
+  display: inline-block;
   margin-top: -4px;
+  margin-left: 8px;
   font-size: 16px;
   line-height: 1;
 }
 
 .nav-dropdown:hover .nav-dropdown-link,
-.nav-dropdown:hover .nav-dropdown-toggle,
 .nav-dropdown:focus-within .nav-dropdown-link,
-.nav-dropdown:focus-within .nav-dropdown-toggle,
-.nav-dropdown.is-open .nav-dropdown-link,
-.nav-dropdown.is-open .nav-dropdown-toggle {
+.nav-dropdown.is-open .nav-dropdown-link {
   color: #ffffff;
   background: #4ca858;
 }
 
-.nav-dropdown .nav-dropdown-link.router-link-active,
-.nav-dropdown .nav-dropdown-link.router-link-active + .nav-dropdown-toggle {
+.nav-dropdown .nav-dropdown-link.router-link-active {
   color: #ffffff;
   background: var(--green-deep);
 }
@@ -2465,6 +2443,25 @@ ul {
   padding: 12px 0 0;
 }
 
+.news-topic-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.news-topic-copy p {
+  margin-top: 6px !important;
+  font-size: 13px !important;
+  line-height: 1.7 !important;
+}
+
+.news-topic-image {
+  width: 132px;
+  aspect-ratio: 16 / 9;
+  flex: 0 0 132px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
 .news-category-directory li b,
 .column-category-grid li b {
   color: var(--green);
@@ -2539,6 +2536,22 @@ ul {
 .column-card li {
   border-top: 1px solid #d9ead5;
 }
+
+.news-item-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 12px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.news-item-description {
+  margin-top: 10px !important;
+  font-size: 13px !important;
+  line-height: 1.7 !important;
+}
+
 .news-directory-card a,
 .column-card a {
   display: flex;
@@ -2989,6 +3002,22 @@ ul {
 .achievement-content-card:nth-child(3) {
   border-color: #d99367;
   box-shadow: 8px 9px 0 #f1d7c6;
+}
+
+.achievement-content-card-media {
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  margin: -30px -30px 22px;
+  border-bottom: 2px solid #d9ead5;
+  border-radius: 16px 16px 0 0;
+  background: #eef8ec;
+}
+
+.achievement-content-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .achievement-content-card > span {
@@ -4465,11 +4494,14 @@ ul {
   }
 
   .nav-shell.is-open {
-    max-height: 720px;
+    max-height: min(720px, calc(100dvh - 100px));
+    align-items: center;
     padding-top: 10px;
     padding-bottom: 14px;
     border-bottom-color: var(--green);
     border-bottom-width: 4px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .nav-shell a,
@@ -4481,15 +4513,37 @@ ul {
     border-radius: 10px;
   }
 
-  .nav-dropdown {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 42px;
-    width: 100%;
-    gap: 4px;
+  .nav-shell > a:not(.home-link),
+  .nav-shell > .nav-dropdown {
+    width: min(100%, 360px);
   }
 
-  .nav-dropdown-link,
-  .nav-dropdown-toggle {
+  .nav-shell > a:not(.home-link),
+  .nav-shell .nav-dropdown-link,
+  .nav-shell .home-link {
+    color: var(--green-deep);
+    background: #edf8eb;
+  }
+
+  .nav-shell > a:not(.home-link):hover,
+  .nav-shell > a:not(.home-link):focus-visible,
+  .nav-shell > a:not(.home-link):active,
+  .nav-shell > a.router-link-active:not(.home-link),
+  .nav-shell .nav-dropdown.is-open .nav-dropdown-link,
+  .nav-shell .nav-dropdown-menu a:active,
+  .nav-shell .nav-dropdown-menu a:focus-visible,
+  .nav-shell .nav-dropdown-menu a.router-link-active {
+    color: #ffffff;
+    background: var(--green);
+  }
+
+  .nav-dropdown {
+    display: block;
+    width: 100%;
+  }
+
+  .nav-dropdown-link {
+    display: flex;
     width: 100%;
     min-height: 42px;
     border-radius: 10px !important;
@@ -4500,15 +4554,9 @@ ul {
     padding-right: 12px !important;
   }
 
-  .nav-dropdown-toggle {
-    padding: 0;
-    background: #edf8eb;
-  }
-
   .nav-dropdown-menu,
   .nav-dropdown:hover .nav-dropdown-menu {
     position: static;
-    grid-column: 1 / -1;
     display: grid;
     min-width: 0;
     max-height: 0;

@@ -10,9 +10,10 @@ const newsCategories = {
     title: "國小專區",
     description: "最新國小班招生資訊、課程異動、開班通知，以及各年級學習活動。",
     topics: [
-      "國小班招生資訊",
-      "升私中數學班說明會",
-      "資優數學班開班通知",
+      // 每則消息可編輯 title、description 與 image。
+      { title: "國小班招生資訊", description: "", image: "" },
+      { title: "升私中數學班說明會", description: "", image: "" },
+      { title: "資優數學班開班通知", description: "", image: "" },
     ],
   },
   "junior-high": {
@@ -20,9 +21,9 @@ const newsCategories = {
     title: "國中專區",
     description: "最新國中班招生資訊、段考複習班公告、會考相關資訊與升學動態。",
     topics: [
-      "六升七暑期先修班招生中",
-      "九年級會考 A++ 必勝班說明",
-      "段考複習課程公告",
+      { title: "六升七暑期先修班招生中", description: "", image: "" },
+      { title: "九年級會考 A++ 必勝班說明", description: "", image: "" },
+      { title: "段考複習課程公告", description: "", image: "" },
     ],
   },
   "senior-high": {
@@ -30,9 +31,9 @@ const newsCategories = {
     title: "高中專區",
     description: "最新高中班招生資訊、學測衝刺規劃與各科課程異動。",
     topics: [
-      "高中學測衝刺班招生中",
-      "高中英文閱讀寫作加強班",
-      "數學、物理、化學專班開課",
+      { title: "高中學測衝刺班招生中", description: "", image: "" },
+      { title: "高中英文閱讀寫作加強班", description: "", image: "" },
+      { title: "數學、物理、化學專班開課", description: "", image: "" },
     ],
   },
 };
@@ -53,8 +54,17 @@ const category = computed(() => newsCategories[route.params.sectionId]);
         <h2>最新消息與課程動態</h2>
         <p>{{ category.description }}</p>
         <ul>
-          <li v-for="topic in category.topics" :key="topic">
-            <span>{{ topic }}</span>
+          <li v-for="topic in category.topics" :key="topic.title">
+            <div class="news-topic-copy">
+              <span>{{ topic.title }}</span>
+              <p v-if="topic.description">{{ topic.description }}</p>
+            </div>
+            <img
+              v-if="topic.image"
+              class="news-topic-image"
+              :src="topic.image"
+              :alt="topic.title"
+            />
             <b aria-hidden="true">→</b>
           </li>
         </ul>

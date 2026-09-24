@@ -50,9 +50,27 @@ const sections = {
     description:
       "這裡記錄了大昇歷屆學生的傑出成就：考上理想學校、在競賽中脫穎而出、或是突破自我最高紀錄的每一個時刻。我們為每一位大昇的孩子感到驕傲，也希望這些榮耀成為後來者的鼓勵與動力。",
     cards: [
-      ["01", "理想學校", "每一份錄取通知，都是長期累積與堅持的成果。"],
-      ["02", "競賽突破", "在一次次挑戰裡，孩子看見自己的潛力與可能。"],
-      ["03", "超越自己", "不只追求名次，更珍惜每一次比昨天更好的進步。"],
+      {
+        id: "01",
+        title: "理想學校",
+        description: "每一份錄取通知，都是長期累積與堅持的成果。",
+        image: "",
+        imageAlt: "理想學校錄取成果照片",
+      },
+      {
+        id: "02",
+        title: "競賽突破",
+        description: "在一次次挑戰裡，孩子看見自己的潛力與可能。",
+        image: "",
+        imageAlt: "學生競賽成果照片",
+      },
+      {
+        id: "03",
+        title: "超越自己",
+        description: "不只追求名次，更珍惜每一次比昨天更好的進步。",
+        image: "",
+        imageAlt: "學生學習成果照片",
+      },
     ],
   },
   "student-stories": {
@@ -128,12 +146,18 @@ const section = computed(() => sections[route.params.achievementId]);
       <div class="achievement-content-grid">
         <article
           v-for="card in section.cards"
-          :key="card[0]"
+          :key="card.id ?? card[0]"
           class="achievement-content-card"
         >
-          <span>{{ card[0] }}</span>
-          <h2>{{ card[1] }}</h2>
-          <p>{{ card[2] }}</p>
+          <figure v-if="card.image" class="achievement-content-card-media">
+            <img
+              :src="card.image"
+              :alt="card.imageAlt ?? card.title ?? card[1]"
+            />
+          </figure>
+          <span>{{ card.id ?? card[0] }}</span>
+          <h2>{{ card.title ?? card[1] }}</h2>
+          <p>{{ card.description ?? card[2] }}</p>
         </article>
       </div>
     </section>

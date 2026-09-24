@@ -13,8 +13,7 @@ const branchDefinitions = {
     area: "內湖",
     phone: "02-2631-0572",
     address: "臺北市內湖區康寧路三段189巷11弄1號2樓",
-    facebook:
-      "https://www.facebook.com/search/pages/?q=%E6%98%8E%E6%B9%96%E5%88%86%E6%A0%A1",
+    facebook: "https://www.facebook.com/darson.donghu",
     color: "blue",
     description:
       "明湖分校陪伴內湖地區的孩子穩定累積基礎，從國小學習習慣到國高中升學準備，提供清楚、有節奏的學習支持。",
