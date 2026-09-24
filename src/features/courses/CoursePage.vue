@@ -36,6 +36,12 @@ const courseImageFiles = {
   "國小/資優數學": "S__34603048_0.jpg",
 };
 
+const colorBlockCourseNames = new Set([
+  "六升七暑期先修班",
+  "九年級會考A++必勝班",
+  "數A班",
+]);
+
 const createCourseDetails = (courses, level) =>
   courses.map((name) => ({
     name,
@@ -69,6 +75,7 @@ const courseDefinitions = {
       {
         name: "資優數學班",
         campaignId: campaignIds["資優數學班"],
+        imageFolder: courseImageFolders["資優數學班"],
         description:
           "從數感、邏輯與多元解題切入，引導孩子挑戰更高層次的數學問題，在扎實基礎上培養靈活思考與解題能力。",
         audience: "喜歡挑戰數學、希望培養高階思維的國小生",
@@ -164,6 +171,14 @@ const getCourseImage = (detail) => {
 
   return imageEntry?.[1] ?? "";
 };
+
+const shouldUseColorBlock = (detail) =>
+  colorBlockCourseNames.has(detail.name) || !getCourseImage(detail);
+
+const courseCardPhotoClass = (detail) =>
+  shouldUseColorBlock(detail)
+    ? `is-color-block is-${course.value?.color ?? "green"}`
+    : "";
 </script>
 
 <template>
@@ -194,11 +209,22 @@ const getCourseImage = (detail) => {
         <div
           v-if="courseImages.length"
           class="course-detail-gallery"
-          :aria-label="`${course.name}課堂照片`"
+          :class="{ 'is-color-gallery': course.folder === '國中' }"
+          :aria-label="
+            course.folder === '國中'
+              ? `${course.name}視覺色塊`
+              : `${course.name}課堂照片`
+          "
         >
-          <figure v-for="(image, index) in courseImages" :key="image">
-            <img :src="image" :alt="`${course.name}課堂照片 ${index + 1}`" />
-          </figure>
+          <template v-if="course.folder === '國中'">
+            <figure class="course-detail-color-block" aria-hidden="true"></figure>
+            <figure class="course-detail-color-block" aria-hidden="true"></figure>
+          </template>
+          <template v-else>
+            <figure v-for="(image, index) in courseImages" :key="image">
+              <img :src="image" :alt="`${course.name}課堂照片 ${index + 1}`" />
+            </figure>
+          </template>
         </div>
       </div>
 
@@ -221,10 +247,12 @@ const getCourseImage = (detail) => {
             class="course-class-card"
           >
             <figure
-              v-if="getCourseImage(detail)"
               class="course-class-photo"
+              :class="courseCardPhotoClass(detail)"
+              :aria-hidden="shouldUseColorBlock(detail) ? 'true' : undefined"
             >
               <img
+                v-if="!shouldUseColorBlock(detail)"
                 :src="getCourseImage(detail)"
                 :alt="`${detail.name}課堂照片`"
               />

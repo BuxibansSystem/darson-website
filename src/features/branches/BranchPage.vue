@@ -13,6 +13,8 @@ const branchDefinitions = {
     area: "內湖",
     phone: "02-2631-0572",
     address: "臺北市內湖區康寧路三段189巷11弄1號2樓",
+    facebook:
+      "https://www.facebook.com/search/pages/?q=%E6%98%8E%E6%B9%96%E5%88%86%E6%A0%A1",
     color: "blue",
     description:
       "明湖分校陪伴內湖地區的孩子穩定累積基礎，從國小學習習慣到國高中升學準備，提供清楚、有節奏的學習支持。",
@@ -28,6 +30,7 @@ const branchDefinitions = {
     area: "大安",
     phone: "02-6613-0888",
     address: "臺北市大安區信義路三段202號6樓",
+    facebook: "https://www.facebook.com/darson.xinyi",
     color: "green",
     description:
       "信義分校位於交通便利的大安區，老師以扎實教學與個別關注，陪伴孩子找到適合自己的讀書方法。",
@@ -43,6 +46,7 @@ const branchDefinitions = {
     area: "內湖",
     phone: "02-7709-5599",
     address: "臺北市內湖區東湖路15號2樓",
+    facebook: "https://www.facebook.com/darson.donghu",
     color: "orange",
     description:
       "東湖分校重視孩子的學習節奏與成長信心，透過課堂引導、課後輔導與家長溝通，讓每一步都走得更穩。",
@@ -58,6 +62,7 @@ const branchDefinitions = {
     area: "新北",
     phone: "02-2992-0107",
     address: "新北市新莊區中正路164號4樓",
+    facebook: "https://www.facebook.com/darson.xinchuang",
     color: "blue",
     description:
       "新莊分校提供完整的國小、國中與高中課程，陪伴孩子建立觀念、累積實力，從容面對每個升學階段。",
@@ -73,6 +78,7 @@ const branchDefinitions = {
     area: "新北",
     phone: "02-2921-1586",
     address: "新北市永和區竹林路64號2樓",
+    facebook: "https://www.facebook.com/profile.php?id=61573113874894",
     color: "green",
     description:
       "永和分校以溫暖、穩定的學習環境，陪伴孩子在課業之外培養自律與自信，和家長一起看見進步。",
@@ -161,7 +167,7 @@ const branchImages = computed(() => {
               <dt>FB粉專</dt>
               <dd>
                 <a
-                  :href="`https://www.facebook.com/search/pages/?q=${encodeURIComponent(branch.name)}`"
+                  :href="branch.facebook"
                   target="_blank"
                   rel="noopener noreferrer"
                   >前往{{ branch.name }}粉絲專頁</a

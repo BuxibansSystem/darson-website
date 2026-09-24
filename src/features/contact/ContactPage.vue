@@ -56,11 +56,15 @@ const questions = [
           <span>03 安排試聽</span>
         </div>
       </div>
-      <div class="google-form-embed" aria-label="Google 表單嵌入區">
-        <div class="google-form-placeholder">
-          <span>GOOGLE FORM</span>
-          <p>Google 表單將顯示於此</p>
-        </div>
+      <div class="google-form-embed" aria-label="Google 表單連結">
+        <a
+          class="google-form-link"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfTp9g83k_pZU32MsIn_tgwAFD0ZzK13ukKy2QmhPASRU1vkg/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          立即填寫表單 <span aria-hidden="true">→</span>
+        </a>
       </div>
     </section>
 
